@@ -2,6 +2,12 @@
 
 ## Setting up
 
+First you must add the library code to the ``head`` tag.
+
+``` html
+<script src="mediamanager-external-library.js"></script>
+```
+
 ## Setting client
 
 You will need to set your shortname, this can be done via the ``client`` function.
