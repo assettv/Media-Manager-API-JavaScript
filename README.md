@@ -49,5 +49,5 @@ getTemplateMostViewedVideos("{template_id"}, Function onComplete);
 This will return a recommendation based on another video.
 
 ``` javascript
-recommendTemplateVideo("{template_id"}, "{video_id"}, Function onComplete);
+recommendTemplateVideo("{template_id"}, "{video_id}", Function onComplete);
 ```
