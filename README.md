@@ -1,5 +1,7 @@
 # Media Manager External API - Javascript
 
+This library allows you to easily interact with Media Managers External APIs.
+
 ## Setting up
 
 First you must add the library code to the ``head`` tag.
