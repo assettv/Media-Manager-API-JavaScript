@@ -22,12 +22,16 @@ function(json, code, request){
 
 ## Templates
 
-There are a number of different external APIs for getting template data.
+There are a number of different external APIs for getting template data. All template APIs are called on the template object.
+
+``` javascript
+mediamanager.external.template.{functionName};
+```
 
 ### Most viewed videos
 
 You can get the most viewed videos on template
 
 ``` javascript
-mediamanager.external.template.getTemplateMostViewedVideos("{template_id"}, Function onComplete);
+getTemplateMostViewedVideos("{template_id"}, Function onComplete);
 ```
