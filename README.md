@@ -36,7 +36,7 @@ There are a number of different external APIs for getting template data. All tem
 mediamanager.external.template.{functionName};
 ```
 
-### Most viewed videos
+### Most viewed videos on template
 
 You can get the most viewed videos on template
 
