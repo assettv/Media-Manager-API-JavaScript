@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- THE NANOAJAX JS -->
+        <script src="nanoajax.js"></script>
+
+        <!-- THE MEDIA MANAGER EXTENAL API LIBRARY -->
+        <script src="mediamanager-external-library.js"></script>
+
+    </head>
+    <body>
+        <script>
+            
+            //A EXTERNAL TEMPLATE
+            var templateID = "53a15d3e75a295166e8b4569";
+            
+            //A VIDEO ID
+            var videoID = "56178e4c37cfe412428b4567";
+
+            //SET THE CLIENT
+            mediamanager.external.client("demo");
+            
+            //GET MOST VIEWED VIDEOS
+            mediamanager.external.template.getTemplateMostViewedVideos(templateID, function(videos){
+                console.log(videos);
+            });
+
+        </script>
+    </body>
+</html>
