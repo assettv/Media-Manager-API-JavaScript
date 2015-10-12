@@ -43,3 +43,11 @@ You can get the most viewed videos on template
 ``` javascript
 getTemplateMostViewedVideos("{template_id"}, Function onComplete);
 ```
+
+### Recommend template video
+
+This will return a recommendation based on another video.
+
+``` javascript
+recommendTemplateVideo("{template_id"}, "{video_id"}, Function onComplete);
+```
