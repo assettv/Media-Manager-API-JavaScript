@@ -28,15 +28,16 @@ mediamanager.external = new function () {
     };
 
     request = function (url, onComplete) {
-        
-        onComplete = onComplete || function(){};
-        
+
+        onComplete = onComplete || function () {
+        };
+
         //CALL API
         nanoajax.ajax({url: url, method: 'GET'}, function (code, responseText, request) {
 
             //PARSE JSON TEXT
             var json = JSON.parse(responseText);
-            
+
             //CALL ON COMPLETE
             onComplete(json, code, request);
         });
@@ -53,7 +54,7 @@ mediamanager.external = new function () {
          * @param {type} template
          * @returns {undefined}
          */
-        this.getMostViewed = function (template) {
+        this.getTemplateMostViewedVideos = function (template, onComplete) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -61,9 +62,45 @@ mediamanager.external = new function () {
                 return;
             }
 
-            request(baseURL + "/template/" + template + "/videos/mostviewed", function (response) {
-                console.log(response);
-            });
+            request(baseURL + "/template/" + template + "/videos/mostviewed", onComplete);
+        };
+        
+        /**
+         * Get most viewed videos
+         * @param {type} template
+         * @returns {undefined}
+         */
+        this.getTemplateLatestVideos = function (template, onComplete) {
+
+            //IF NO TEMPLATE FOUND.
+            if (typeof template === "undefined") {
+                console.error("Missing templateID");
+                return;
+            }
+
+            request(baseURL + "/template/" + template + "/videos/latest", onComplete);
+        };
+
+        /**
+         * Get most viewed videos
+         * @param {type} template
+         * @returns {undefined}
+         */
+        this.recommendTemplateVideo = function (template, videoid, onComplete) {
+
+            //IF NO TEMPLATE FOUND.
+            if (typeof template === "undefined") {
+                console.error("Missing templateID");
+                return;
+            }
+
+            //IF NO TEMPLATE FOUND.
+            if (typeof videoid === "undefined") {
+                console.error("Missing videoid");
+                return;
+            }
+
+            request(baseURL + "/template/" + template + "/videos/recommend/" + videoid, onComplete);
         };
     };
 };
