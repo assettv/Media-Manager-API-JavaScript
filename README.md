@@ -77,3 +77,13 @@ Get all audios on a given template
 ``` javascript
 mediamanager.external.template.getAudios("{template_id"}, Function onComplete);
 ```
+
+## Responses
+
+All the responses will be returned as ``json``. Sometimes errors can be thrown.
+
+### Errors
+
+*Invalid 'templateID'*
+
+A invalid templateID has been passed
