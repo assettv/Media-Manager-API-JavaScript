@@ -86,4 +86,12 @@ All the responses will be returned as ``json``. Sometimes errors can be thrown.
 
 **Invalid 'templateID'**
 
-An invalid templateID has been passed
+An invalid templateID has been passed.
+
+**Template is not an external template**
+
+The template you have passed is not a "external template".
+
+**API Cannot be called from {domain}**
+
+External APIs can only be called from the registered domain of the external template.
