@@ -64,7 +64,7 @@ mediamanager.external.template.searchVideos("{template_id"}, ["term1","term2"], 
 
 ### Get videos
 
-Get all videos on a given template
+Get all videos on a given template.
 
 ``` javascript
 mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
@@ -72,7 +72,7 @@ mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
 
 ### Get audios
 
-Get all audios on a given template
+Get all audios on a given template.
 
 ``` javascript
 mediamanager.external.template.getAudios("{template_id"}, Function onComplete);
@@ -84,7 +84,7 @@ The playlist APIs allow you to get content on a external template, but filter th
 
 ### Get audios
 
-Get all audios on a given template and playlist
+Get all audios on a given template and playlist.
 
 ``` javascript
 mediamanager.external.playlist.getAudios("{playlist_id}","{template_id"}, Function onComplete);
@@ -92,7 +92,7 @@ mediamanager.external.playlist.getAudios("{playlist_id}","{template_id"}, Functi
 
 ### Get videos
 
-Get all audios on a given template and playlist
+Get all audios on a given template and playlist.
 
 ``` javascript
 mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"}, Function onComplete);
@@ -100,7 +100,7 @@ mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"}, Functi
 
 ### Get video
 
-Get video on a given template and playlist
+Get video on a given template and playlist.
 
 ``` javascript
 mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{video_id}", Function onComplete);
@@ -108,7 +108,7 @@ mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{video
 
 ### Get audio
 
-Get audio on a given template and playlist
+Get audio on a given template and playlist.
 
 ``` javascript
 mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{audio_id}", Function onComplete);
