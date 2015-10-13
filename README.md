@@ -30,18 +30,14 @@ function(json, code, request){
 
 ## Templates
 
-There are a number of different external APIs for getting template data. All template APIs are called on the template object.
-
-``` javascript
-mediamanager.external.template.{functionName};
-```
+A list of the template APIs that can be used on the external API.
 
 ### Most viewed videos on template
 
 You can get the most viewed videos on template
 
 ``` javascript
-getTemplateMostViewedVideos("{template_id"}, Function onComplete);
+mediamanager.external.template.getTemplateMostViewedVideos("{template_id"}, Function onComplete);
 ```
 
 ### Recommend template video
@@ -49,7 +45,7 @@ getTemplateMostViewedVideos("{template_id"}, Function onComplete);
 This will return a recommendation based on another video.
 
 ``` javascript
-recommendTemplateVideo("{template_id"}, "{video_id}", Function onComplete);
+mediamanager.external.template.recommendTemplateVideo("{template_id"}, "{video_id}", Function onComplete);
 ```
 
 ### Search template videos
@@ -57,11 +53,11 @@ recommendTemplateVideo("{template_id"}, "{video_id}", Function onComplete);
 Search videos on given template. 
 
 ``` javascript
-searchTemplateVideos("{template_id"}, "{term}", Function onComplete);
+mediamanager.external.template.searchTemplateVideos("{template_id"}, "{term}", Function onComplete);
 ```
 
 You can also pass an ``array`` of search terms also.
 
 ``` javascript
-searchTemplateVideos("{template_id"}, ["term1","term2"], Function onComplete);
+mediamanager.external.template.searchTemplateVideos("{template_id"}, ["term1","term2"], Function onComplete);
 ```
