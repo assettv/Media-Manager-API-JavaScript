@@ -78,6 +78,42 @@ Get all audios on a given template
 mediamanager.external.template.getAudios("{template_id"}, Function onComplete);
 ```
 
+## Playlists
+
+The playlist APIs allow you to get content on a external template, but filter the content down by a playlist.
+
+### Get audios
+
+Get all audios on a given template and playlist
+
+``` javascript
+mediamanager.external.playlist.getAudios("{playlist_id}","{template_id"}, Function onComplete);
+```
+
+### Get videos
+
+Get all audios on a given template and playlist
+
+``` javascript
+mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"}, Function onComplete);
+```
+
+### Get video
+
+Get video on a given template and playlist
+
+``` javascript
+mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{video_id}", Function onComplete);
+```
+
+### Get audio
+
+Get audio on a given template and playlist
+
+``` javascript
+mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{audio_id}", Function onComplete);
+```
+
 ## Responses
 
 All responses will be returned as ``json``. Sometimes errors can be thrown.
