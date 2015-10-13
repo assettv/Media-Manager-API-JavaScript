@@ -86,4 +86,4 @@ All the responses will be returned as ``json``. Sometimes errors can be thrown.
 
 **Invalid 'templateID'**
 
-A invalid templateID has been passed
+An invalid templateID has been passed
