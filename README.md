@@ -116,7 +116,7 @@ mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{audio
 
 ## Responses
 
-All responses will be returned as ``json``. Sometimes errors can be thrown.
+All responses will be returned as ``json``.
 
 ### Paged
 
