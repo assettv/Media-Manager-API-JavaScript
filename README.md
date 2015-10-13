@@ -40,7 +40,7 @@ You can get the most viewed videos on template
 mediamanager.external.template.getMostViewedVideos("{template_id"}, Function onComplete);
 ```
 
-### Recommend template video
+### Recommend video
 
 This will return a recommendation based on another video.
 
@@ -48,7 +48,7 @@ This will return a recommendation based on another video.
 mediamanager.external.template.recommendVideo("{template_id"}, "{video_id}", Function onComplete);
 ```
 
-### Search template videos
+### Search videos
 
 Search videos on given template. 
 
