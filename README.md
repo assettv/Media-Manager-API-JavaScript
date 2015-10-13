@@ -68,6 +68,7 @@ Get all videos on a given template
 
 ``` javascript
 mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
+```
 
 ### Get audios
 
