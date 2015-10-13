@@ -75,5 +75,5 @@ mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
 Get all audios on a given template
 
 ``` javascript
-mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
+mediamanager.external.template.getAudios("{template_id"}, Function onComplete);
 ```
