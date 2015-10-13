@@ -51,3 +51,17 @@ This will return a recommendation based on another video.
 ``` javascript
 recommendTemplateVideo("{template_id"}, "{video_id}", Function onComplete);
 ```
+
+### Search template videos
+
+Search videos on given template. 
+
+``` javascript
+searchTemplateVideos("{template_id"}, "{term}", Function onComplete);
+```
+
+You can also pass an ``array`` of search terms also.
+
+``` javascript
+searchTemplateVideos("{template_id"}, ["term1","term2"], Function onComplete);
+```
