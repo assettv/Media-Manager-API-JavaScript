@@ -61,3 +61,18 @@ You can also pass an ``array`` of search terms also.
 ``` javascript
 mediamanager.external.template.searchVideos("{template_id"}, ["term1","term2"], Function onComplete);
 ```
+
+### Get videos
+
+Get all videos on a given template
+
+``` javascript
+mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
+
+### Get audios
+
+Get all audios on a given template
+
+``` javascript
+mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
+```
