@@ -80,7 +80,25 @@ mediamanager.external.template.getAudios("{template_id"}, Function onComplete);
 
 ## Responses
 
-All the responses will be returned as ``json``. Sometimes errors can be thrown.
+All responses will be returned as ``json``. Sometimes errors can be thrown.
+
+### Paged
+
+All responses will be returned in paged format.
+
+``` javascript
+{
+    current_page: 1,
+    data: [...],
+    from: 1,
+    last_page: 1,
+    per_page: 24,
+    to: 5,
+    total: 5
+}
+```
+
+``data`` contains an ``array`` of all the api content. The functions above will automatically return the ``data``.
 
 ### Errors
 
