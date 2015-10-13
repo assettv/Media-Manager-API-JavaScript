@@ -114,6 +114,21 @@ Get audio on a given template and playlist.
 mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{audio_id}", Function onComplete);
 ```
 
+## Filters
+
+You can also add filters to the API calls by using the ``addFilter`` function. This allows you to filter down your content further.
+
+``` javascript
+mediamanager.external.addFilter("{filterName}, "{filterValue}");
+```
+
+**e.g.**
+
+``` javascript
+//CHANGE THE PAGER TO BE 2 PER PAGE.
+mediamanager.external.addFilter("perPage",2);
+```
+
 ## Responses
 
 All responses will be returned as ``json``.
