@@ -7,7 +7,7 @@ This library allows you to easily interact with Media Managers External APIs.
 First you must add the library code to the ``head`` tag.
 
 ``` html
-<script src="mediamanager-external-library.js"></script>
+<script src="mm.external.lib.min.js"></script>
 ```
 
 ## Setting client
