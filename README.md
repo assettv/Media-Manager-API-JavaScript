@@ -33,7 +33,7 @@ function(json, code, request){
 You may wish to record analytics against your external template so that it appears under the ``SHOW template``. You can make sure this happens by using the ``external.embed()`` function instead of ``mediamanager.embed()``.
 
 ``` javascript
-mdiamanager.external.embed();
+mdiamanager.external.embed("{external_template_id}","{element_id}); //element_id is not required
 ```
 
 If you do not embed this way, then all analytics will be recorded against the template you provided using ``mediamanager.template()`` only.
