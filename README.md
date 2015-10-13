@@ -119,7 +119,7 @@ mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{audio
 You can also add filters to the API calls by using the ``addFilter`` function. This allows you to filter down your content further.
 
 ``` javascript
-mediamanager.external.addFilter("{filterName}, "{filterValue}");
+mediamanager.external.addFilter("{filterName}", "{filterValue}");
 ```
 
 **e.g.**
