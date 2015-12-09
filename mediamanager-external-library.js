@@ -50,7 +50,9 @@ mediamanager.external = new function () {
     //SEND PING REQUEST TO RECORD ANALYTICS FOR EXTERNAL TEMPLATE.
     ping = function (template, mediaid) {
         var url = this.parseBaseURL().replace("/external", "");
-        request(url + "/ajax/embed/video/" + mediaid + "?external_template=" + template);
+        request(url + "/ajax/embed/video/" + mediaid, null, {
+            external_template: template
+        });
     };
 
     /**
@@ -84,13 +86,15 @@ mediamanager.external = new function () {
      * @param {type} onComplete
      * @returns {undefined}]
      */
-    request = function (url, onComplete) {
+    request = function (url, onComplete, params) {
 
         onComplete = onComplete || function () {
         };
 
+        params = $.extend(params || {}, globalParams);
+
         //CALL API
-        nanoajax.ajax({url: url + "?" + serialize(globalParams), method: 'GET'}, function (code, responseText, request) {
+        nanoajax.ajax({url: url + "?" + serialize(params), method: 'GET'}, function (code, responseText, request) {
 
             //PARSE JSON TEXT
             var json = JSON.parse(responseText);
@@ -144,6 +148,28 @@ mediamanager.external = new function () {
         };
 
         /**
+         * Get a single video.
+         * @param string video Video ID of single video to get.
+         * @param string template Template ID of template in which video is.
+         * @param function onComplete Callback function for when video was retrieved.
+         * @return undefined
+         */
+        this.getVideo = function (video, template, onComplete) {
+
+            if (typeof template === "undefined") {
+                console.error("Missing templateID");
+                return;
+            }
+
+            if (typeof video === "undefined") {
+                console.error("Missing videoID");
+                return;
+            }
+
+            request(baseURL + "/template/" + template + "/video/" + video, onComplete);
+        };
+
+        /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
@@ -155,7 +181,9 @@ mediamanager.external = new function () {
                 console.error("Missing templateID");
                 return;
             }
-            request(baseURL + "/template/" + template + "/video/search?term=" + term, onComplete);
+            request(baseURL + "/template/" + template + "/video/search", onComplete, {
+                term: term
+            });
         };
 
         /**
