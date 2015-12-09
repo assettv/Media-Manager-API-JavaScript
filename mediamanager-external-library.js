@@ -3,7 +3,7 @@ var mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
 mediamanager.external = new function () {
 
     //THE BASE URL
-    var baseURL = "http://{shortname}.dev.mediamanager.io/api/v1/external";
+    var baseURL = "https://{shortname}.getmediamanager.com/api/v1/external";
 
     //GLOBAL PARAMS TO BE PASSED TO ALL API CALLS.
     var globalParams = {};
@@ -72,8 +72,8 @@ mediamanager.external = new function () {
      * @returns {unresolved}
      */
     parseBaseURL = function () {
-        if (typeof mediamanager.sn !== "undefined") {
-            return baseURL.replace("{shortname}", mediamanager.sn);
+        if (typeof mediamanager.client !== "undefined") {
+            return baseURL.replace("{shortname}", mediamanager.client);
         }
         console.error("Missing client shortname");
     };
