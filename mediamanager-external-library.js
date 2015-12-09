@@ -14,7 +14,7 @@ mediamanager.external = new function () {
      * @returns {undefined}
      */
     this.client = function (client) {
-        mediamanager.client = client;
+        mediamanager.client(client);
         //SETUP BASE URL
         baseURL = parseBaseURL();
     };
@@ -72,8 +72,8 @@ mediamanager.external = new function () {
      * @returns {unresolved}
      */
     parseBaseURL = function () {
-        if (typeof mediamanager.client !== "undefined") {
-            return baseURL.replace("{shortname}", mediamanager.client);
+        if (typeof mediamanager.sn !== "undefined") {
+            return baseURL.replace("{shortname}", mediamanager.sn);
         }
         console.error("Missing client shortname");
     };
