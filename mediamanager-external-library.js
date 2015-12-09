@@ -148,6 +148,28 @@ mediamanager.external = new function () {
         };
 
         /**
+         * Get a single video.
+         * @param string video Video ID of single video to get.
+         * @param string template Template ID of template in which video is.
+         * @param function onComplete Callback function for when video was retrieved.
+         * @return undefined
+         */
+        this.getVideo = function (video, template, onComplete) {
+
+            if (typeof template === "undefined") {
+                console.error("Missing templateID");
+                return;
+            }
+
+            if (typeof video === "undefined") {
+                console.error("Missing videoID");
+                return;
+            }
+
+            request(baseURL + "/template/" + template + "/video/" + video, onComplete);
+        };
+
+        /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
