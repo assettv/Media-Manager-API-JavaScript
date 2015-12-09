@@ -50,7 +50,9 @@ mediamanager.external = new function () {
     //SEND PING REQUEST TO RECORD ANALYTICS FOR EXTERNAL TEMPLATE.
     ping = function (template, mediaid) {
         var url = this.parseBaseURL().replace("/external", "");
-        request(url + "/ajax/embed/video/" + mediaid + "?external_template=" + template);
+        request(url + "/ajax/embed/video/" + mediaid, null, {
+            external_template: template
+        });
     };
 
     /**
@@ -84,13 +86,15 @@ mediamanager.external = new function () {
      * @param {type} onComplete
      * @returns {undefined}]
      */
-    request = function (url, onComplete) {
+    request = function (url, onComplete, params) {
 
         onComplete = onComplete || function () {
         };
 
+        params = $.extend(params || {}, globalParams);
+
         //CALL API
-        nanoajax.ajax({url: url + "?" + serialize(globalParams), method: 'GET'}, function (code, responseText, request) {
+        nanoajax.ajax({url: url + "?" + serialize(params), method: 'GET'}, function (code, responseText, request) {
 
             //PARSE JSON TEXT
             var json = JSON.parse(responseText);
@@ -155,7 +159,9 @@ mediamanager.external = new function () {
                 console.error("Missing templateID");
                 return;
             }
-            request(baseURL + "/template/" + template + "/video/search?term=" + term, onComplete);
+            request(baseURL + "/template/" + template + "/video/search", onComplete, {
+                term: term
+            });
         };
 
         /**
