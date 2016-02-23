@@ -136,7 +136,7 @@ mediamanager.external = new function () {
          * @param {type} template
          * @returns {undefined}
          */
-        this.getVideos = function (template, onComplete) {
+        this.getLatestVideos = function (template, onComplete) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
