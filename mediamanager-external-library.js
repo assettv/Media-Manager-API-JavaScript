@@ -91,7 +91,7 @@ mediamanager.external = new function () {
         onComplete = onComplete || function () {
         };
 
-        params = $.extend(params || {}, globalParams);
+        params = extend(params || {}, globalParams);
 
         //CALL API
         nanoajax.ajax({url: url + "?" + serialize(params), method: 'GET'}, function (code, responseText, request) {
@@ -375,6 +375,46 @@ mediamanager.external = new function () {
             request(baseURL + "/playlist/" + playlist + "/video/" + videoid, onComplete);
         };
     };
+
+    /**
+     * Clone given object.
+     * 
+     * @param {object} obj Object to clone.
+     * @return {object} Cloned version of obj.
+     */
+    function clone (obj) {
+
+        var objProto = Object.getPrototypeOf(obj);
+        var clone = Object.create(objProto);
+
+        Object.keys(obj).forEach(function (key) {
+            clone[key] = obj[key];
+        });
+
+        return clone;
+    }
+
+    /**
+     * Extend one object with another.
+     * Merges objB into objA. This means
+     * any keys shared by objA with objB 
+     * will be substituted by those in 
+     * objB.
+     *
+     * @param {object} objA Any object to extend.
+     * @param {object} objB Any object to extend with.
+     * @return {object} Extended version of objA/
+     */
+    function extend (objA, objB) {
+
+        var result = clone(objA);
+
+        Object.keys(objB).forEach(function (key) {
+            result[key] = objB[key];
+        });
+
+        return result;
+    }
 };
 
 
