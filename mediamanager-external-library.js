@@ -1,4 +1,4 @@
-var mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
+mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
 
 mediamanager.external = new function () {
 
