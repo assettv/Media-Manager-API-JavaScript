@@ -117,7 +117,21 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
      * @type {object}
      */
     var external = {
+        /**
+         * Template for
+         * Base Url used for external 
+         * api calls to mediamanager.
+         *
+         * @type {string}
+         */
         baseURL: "https://{shortname}.getmediamanager.com/api/v1/external",
+        /**
+         * Global filters for all api calls.
+         * Should be set at beginning of app.
+         *
+         * @type {object}
+         */
+        globalFilters: {},
         /**
          * Immutable wrapper for
          * Object.create.
@@ -147,7 +161,14 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 mediamanager.sn = sn;
             return mediamanager.sn;
         },
-        // EMBED CONTENT VIA EMBED SCRIPT
+        /** 
+         * EMBED CONTENT VIA EMBED SCRIPT
+         *
+         * @deprecated
+         * @param {string} externalTemplate External template.
+         * @param {element} element Element to embed into.
+         * @return {undefined}
+         */
         embed: function (externalTemplate, element) {
             if (typeof mediamanager.embed !== "undefined") {
                 if (typeof externalTemplate !== "undefined") {
