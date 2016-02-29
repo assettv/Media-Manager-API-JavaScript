@@ -22,7 +22,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 var encodedParam = encodeURIComponent(key) + "=" + encodeURIComponent(p);
                 result.push( encodedParam );
                 return result;
-            }, []);
+            }, []).join("&");
         },
         /**
          * Replace {key} patterns in 
