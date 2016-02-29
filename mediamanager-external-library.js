@@ -98,14 +98,10 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          * @return {object} Extended version of objA/
          */
         extend: function (objA, objB) {
-
-            var result = clone(objA);
-
-            Object.keys(objB).forEach(function (key) {
-                result[key] = objB[key];
-            });
-
-            return result;
+            return Object.keys(objB).reduce(function (objA, key) {
+                objA[key] = objB[key];
+                return objA;
+            }, util.clone(objA));
         }
     };
 
