@@ -19,7 +19,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
         serialize: function (obj) {
             return Object.keys(obj).reduce(function (result, key) {
                 var p = obj[key];
-                var encodedParam = encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]);
+                var encodedParam = encodeURIComponent(key) + "=" + encodeURIComponent(p);
                 result.push( encodedParam );
                 return result;
             }, []);
