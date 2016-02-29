@@ -127,10 +127,10 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          */
         create: function (spec) {
             var created = Object.create(this);
-            created = Object.keys(spec).reduce(function (result, key) {
+            created = Object.keys(spec).reduce(function (created, key) {
                 var value = spec[key];
-                result[key] = value;
-                return result;
+                created[key] = value;
+                return created;
             }, created);
             return Object.freeze(created);
         },
