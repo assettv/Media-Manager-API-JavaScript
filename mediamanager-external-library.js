@@ -56,7 +56,10 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             params = params || {};
 
             //CALL API
-            nanoajax.ajax({url: url + "?" + util.serialize(params), method: 'GET'}, function (code, responseText, request) {
+            nanoajax.ajax({
+                url: url + "?" + util.serialize(params), 
+                method: 'GET'
+            }, function onSuccess (code, responseText, request) {
 
                 //PARSE JSON TEXT
                 var json = JSON.parse(responseText);
