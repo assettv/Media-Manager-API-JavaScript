@@ -4,7 +4,7 @@ require("../mediamanager-external-library.js");
 
 describe("#mediamanager.external.create( object )", function () {
 
-    it("Should create an instance with prototype of mediamanager.external.", function () {
+    it("Should create an instance with prototype of mediamanager.external", function () {
 
         var spec = {
             name: "Daniel",
