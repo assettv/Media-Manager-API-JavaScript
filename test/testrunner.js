@@ -3,6 +3,7 @@ var chai = require("chai");
 require("./mock-fns.js");
 require("../mediamanager-external-library.js");
 require("./test-util.js");
+require("./test-external.js");
 
 describe("#mediamanager.client(string)", function () {
 
@@ -11,7 +12,7 @@ describe("#mediamanager.client(string)", function () {
         var client = "demo";
         mediamanager.external.client( client );
 
-        chai.expect(mediamanager.sn).to.equal( client );
+        chai.expect( mediamanager.sn ).to.equal( client );
     });
 });
 

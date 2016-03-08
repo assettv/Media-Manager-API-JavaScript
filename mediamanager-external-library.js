@@ -52,7 +52,6 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
 
             onComplete = onComplete || function () {
             };
-
             params = params || {};
 
             //CALL API
