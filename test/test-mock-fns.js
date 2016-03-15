@@ -121,3 +121,33 @@ describe("#addGetParams(string, object)", function () {
         chai.expect( result ).to.equal( expected );
     });
 });
+
+describe("#inject(function, object)", function () {
+
+    var correctDeps = {
+        number: 1,
+        string: "I'm a string",
+        object: {},
+        array: []
+    };
+    var testFn = function testFn (number, string, object, array) {
+        console.log('typeof number', typeof number);
+        console.log('typeof string', typeof string);
+        console.log('typeof object', typeof object);
+        console.log('object is not array', !Array.isArray(object));
+        console.log('array is array', Array.isArray(array));
+        return typeof number === "number" &&
+            typeof string === "string" &&
+            typeof object === "object" &&
+            !Array.isArray(object) &&
+            Array.isArray(array);
+    };
+
+    it("Should inject dependencies of the correct type", function () {
+
+        var result = inject(testFn, correctDeps);
+        var expected = true;
+
+        chai.expect( result ).to.equal( expected );
+    });
+});

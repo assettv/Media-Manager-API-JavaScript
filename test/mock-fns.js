@@ -153,6 +153,20 @@ addGetParams = function (url, newParams) {
     return url.replace(/\?.*$/, paramsString);
 };
 /**
+ * Get the parameters of a function.
+ *
+ * @param {function} fn Function from which to get params.
+ * @return {array} Ordered names (by appearance) of the parameters for the given function.
+ */
+getFnParams = function (fn) {
+
+    var fnString = fn.toString();
+    var fnParamRegex = /function[^\(]*\(([^\)]+)\)\s*{/;
+    var fnParamNames = R.last(fnString.match( fnParamRegex ) || "").split(/,\s?/);
+
+    return fnParamNames;
+};
+/**
  * Primitive/basic dependency
  * injection to a given function.
  * Injects the given dependencies
@@ -165,15 +179,11 @@ addGetParams = function (url, newParams) {
  */
 inject = function (fn, depVals, context) {
 
+    var fnDepNames = getFnParams(fn);
     var fnContext = context || null;
-    var fnString = fn.toString();
-    var fnDepsRegex = /function\s*\(([^\)]+)\)\s*{/;
-    var fnDepNames = R.last(fnString.match( fnDepsRegex ) || "").split(/,\s?/);
-
     var fnDeps = R.map(function (depName) {
-        //console.log("NAME: ", "|", depName, "|", depVals[ depName ]);
         return depVals[ depName ];
     }, fnDepNames);
 
-    fn.apply(fnContext, fnDeps);
+    return fn.apply(fnContext, fnDeps);
 };
