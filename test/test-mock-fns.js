@@ -122,6 +122,35 @@ describe("#addGetParams(string, object)", function () {
     });
 });
 
+describe("#getFnParams(function)", function () {
+
+    var expectedDeps = ["a", "b", "c"];
+    var anon = function (a, b, c) {};
+    var named = function named (a, b, c) {};
+    var anonNoSpace = function(a,b,c){};
+    var namedNoSpace = function named(a,b,c){};
+
+    it("Should parse dependencies of anonymous functions", function () {
+        var result = getFnParams(anon);
+        chai.expect( result ).to.deep.equal( expectedDeps );
+    });
+
+    it("Should parse dependencies of named functions", function () {
+        var result = getFnParams(named);
+        chai.expect( result ).to.deep.equal( expectedDeps );
+    });
+
+    it("Should parse dependencies of anonymous functions with no spaces", function () {
+        var result = getFnParams(anonNoSpace);
+        chai.expect( result ).to.deep.equal( expectedDeps );
+    });
+
+    it("Should parse dependencies of named functions with no spaces", function () {
+        var result = getFnParams(namedNoSpace);
+        chai.expect( result ).to.deep.equal( expectedDeps );
+    });
+});
+
 describe("#inject(function, object)", function () {
 
     var correctDeps = {
