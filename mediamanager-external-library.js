@@ -204,7 +204,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 shortname: this.client()
             });
 
-            util.request(baseURL + "/template/" + template + "/videos/mostviewed", onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos/mostviewed", onComplete);
         },
         /**
          * Get most viewed videos
@@ -248,7 +248,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 shortname: this.client()
             });
 
-            util.request(baseURL + "/template/" + template + "/video/" + video, onComplete);
+            util.request(baseUrl + "/template/" + template + "/video/" + video, onComplete);
         },
         /**
          * Get most viewed videos
@@ -267,7 +267,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 shortname: this.client()
             });
 
-            util.request(baseURL + "/template/" + template + "/video/search", onComplete, {
+            util.request(baseUrl + "/template/" + template + "/video/search", onComplete, {
                 term: term
             });
         },
@@ -288,7 +288,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 shortname: this.client()
             });
 
-            util.request(baseURL + "/template/" + template + "/videos", onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos", onComplete);
         },
         /**
          * Get most viewed videos
@@ -307,7 +307,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 shortname: this.client()
             });
 
-            util.request(baseURL + "/template/" + template + "/audios", onComplete);
+            util.request(baseUrl + "/template/" + template + "/audios", onComplete);
         },
         /**
          * Get most viewed videos
@@ -332,7 +332,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 shortname: this.client()
             });
 
-            util.request(baseURL + "/template/" + template + "/videos/recommend/" + videoid, onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos/recommend/" + videoid, onComplete);
         }
     });
 
@@ -369,7 +369,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             });
 
             //CALL API
-            util.request(baseURL + "/playlist/" + playlist + "/videos", onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/videos", onComplete);
         },
         /**
          * Get most viewed videos
@@ -399,7 +399,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             });
 
             //CALL API
-            util.request(baseURL + "/playlist/" + playlist + "/audios", onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/audios", onComplete);
         },
         /**
          * Get most viewed videos
@@ -429,7 +429,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             });
 
             //CALL API
-            util.request(baseURL + "/playlist/" + playlist + "/videos", onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/videos", onComplete);
         },
         /**
          * Get most viewed videos
@@ -459,7 +459,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             });
 
             //CALL API
-            util.request(baseURL + "/playlist/" + playlist + "/audio/" + audioid, onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/audio/" + audioid, onComplete);
         },
         /**
          * Get most viewed videos
@@ -489,7 +489,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             });
 
             //CALL API
-            util.request(baseURL + "/playlist/" + playlist + "/video/" + videoid, onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/video/" + videoid, onComplete);
         }
     });
 
