@@ -131,11 +131,6 @@ describe("#inject(function, object)", function () {
         array: []
     };
     var testFn = function testFn (number, string, object, array) {
-        console.log('typeof number', typeof number);
-        console.log('typeof string', typeof string);
-        console.log('typeof object', typeof object);
-        console.log('object is not array', !Array.isArray(object));
-        console.log('array is array', Array.isArray(array));
         return typeof number === "number" &&
             typeof string === "string" &&
             typeof object === "object" &&
