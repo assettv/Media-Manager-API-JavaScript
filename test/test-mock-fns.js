@@ -78,8 +78,15 @@ describe("#parseGetParams(string)", function () {
         var result = parseGetParams( normalTestString );
 
         Object.keys(result).forEach(function (key, i) {
-
-            var value = result[key];
+            chai.expect( typeof result[key] ).to.equal("string");
         });
+    });
+
+    it("Should fail with a starting question mark", function () {
+
+        var result = parseGetParams( abnormalTestString );
+        var expected = testObject;
+
+        chai.expect( result ).to.not.deep.equal( expected );
     });
 });
