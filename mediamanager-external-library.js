@@ -200,7 +200,11 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 return;
             }
 
-            util.request(this.baseURL + "/template/" + template + "/videos/mostviewed", onComplete);
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
+            util.request(baseURL + "/template/" + template + "/videos/mostviewed", onComplete);
         },
         /**
          * Get most viewed videos
@@ -240,7 +244,11 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 return;
             }
 
-            util.request(this.baseURL + "/template/" + template + "/video/" + video, onComplete);
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
+            util.request(baseURL + "/template/" + template + "/video/" + video, onComplete);
         },
         /**
          * Get most viewed videos
@@ -254,7 +262,12 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 console.error("Missing templateID");
                 return;
             }
-            util.request(this.baseURL + "/template/" + template + "/video/search", onComplete, {
+
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
+            util.request(baseURL + "/template/" + template + "/video/search", onComplete, {
                 term: term
             });
         },
@@ -270,7 +283,12 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 console.error("Missing templateID");
                 return;
             }
-            util.request(this.baseURL + "/template/" + template + "/videos", onComplete);
+
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
+            util.request(baseURL + "/template/" + template + "/videos", onComplete);
         },
         /**
          * Get most viewed videos
@@ -284,7 +302,12 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 console.error("Missing templateID");
                 return;
             }
-            util.request(this.baseURL + "/template/" + template + "/audios", onComplete);
+
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
+            util.request(baseURL + "/template/" + template + "/audios", onComplete);
         },
         /**
          * Get most viewed videos
@@ -305,7 +328,11 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 return;
             }
 
-            util.request(this.baseURL + "/template/" + template + "/videos/recommend/" + videoid, onComplete);
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
+            util.request(baseURL + "/template/" + template + "/videos/recommend/" + videoid, onComplete);
         }
     });
 
@@ -337,8 +364,12 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             //ADD TEMPLATE ID AS FILTER
             mediamanager.external.addFilter("templateID", template);
 
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
             //CALL API
-            util.request(this.baseURL + "/playlist/" + playlist + "/videos", onComplete);
+            util.request(baseURL + "/playlist/" + playlist + "/videos", onComplete);
         },
         /**
          * Get most viewed videos
@@ -363,8 +394,12 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             //ADD TEMPLATE ID AS FILTER
             mediamanager.external.addFilter("templateID", template);
 
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
             //CALL API
-            util.request(this.baseURL + "/playlist/" + playlist + "/audios", onComplete);
+            util.request(baseURL + "/playlist/" + playlist + "/audios", onComplete);
         },
         /**
          * Get most viewed videos
@@ -389,8 +424,12 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             //ADD TEMPLATE ID AS FILTER
             mediamanager.external.addFilter("templateID", template);
 
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
             //CALL API
-            util.request(this.baseURL + "/playlist/" + playlist + "/videos", onComplete);
+            util.request(baseURL + "/playlist/" + playlist + "/videos", onComplete);
         },
         /**
          * Get most viewed videos
@@ -415,8 +454,12 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             //ADD TEMPLATE ID AS FILTER
             mediamanager.external.addFilter("templateID", template);
 
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
             //CALL API
-            util.request(this.baseURL + "/playlist/" + playlist + "/audio/" + audioid, onComplete);
+            util.request(baseURL + "/playlist/" + playlist + "/audio/" + audioid, onComplete);
         },
         /**
          * Get most viewed videos
@@ -441,8 +484,12 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             //ADD TEMPLATE ID AS FILTER
             mediamanager.external.addFilter("templateID", template);
 
+            var baseUrl = util.templateReplace(this.baseURL, {
+                shortname: this.client()
+            });
+
             //CALL API
-            util.request(this.baseURL + "/playlist/" + playlist + "/video/" + videoid, onComplete);
+            util.request(baseURL + "/playlist/" + playlist + "/video/" + videoid, onComplete);
         }
     });
 
