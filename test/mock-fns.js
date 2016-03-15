@@ -49,14 +49,6 @@ mediamanager.client = function (client) {
  */
 mediamanager.external.util.request = function (url, onComplete, params) {
 
-    // mostviewed: this.baseURL + "/template/" + template + "/videos/mostviewed"
-    // latest: url + "/template/" + template + "/videos/latest", onComplete
-    // video: this.baseURL + "/template/" + template + "/video/" + video
-    // search: this.baseURL + "/template/" + template + "/video/search?term={term}"
-    // videos: this.baseURL + "/template/" + template + "/videos"
-    // audios: this.baseURL + "/template/" + template + "/audios"
-    // recommendVideo: this.baseURL + "/template/" + template + "/videos/recommend/" + videoid
-
     var baseURL = mediamanager.external.util.templateReplace(mediamanager.external.baseURL, {
         shortname: mediamanager.external.client()
     });
