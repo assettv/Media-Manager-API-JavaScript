@@ -8,8 +8,8 @@ var apiTests = [];
 
 apiTests.push({
     name: "getMostViewedVideos",
-    //params: null,
-    //onComplete: null
+    //params: null, -- these are here for examples
+    //onComplete: null -- example 
 });
 apiTests.push({
     name: "getLatestVideos"

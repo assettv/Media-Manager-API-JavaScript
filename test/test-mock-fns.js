@@ -90,3 +90,34 @@ describe("#parseGetParams(string)", function () {
         chai.expect( result ).to.not.deep.equal( expected );
     });
 });
+
+describe("#addGetParams(string, object)", function () {
+
+    var newParams = {
+        awesomeness: "important",
+        bees: "vital"
+    };
+    var oldParams = {
+        winter: "coming",
+        farts: "smelly"
+    };
+    var oldParamString = mediamanager.external.util.serialize( oldParams );
+    var newParamString = mediamanager.external.util.serialize( newParams );
+    var url = "https://example.com/apples/are/cool?" + oldParamString;
+
+    it("Should not replace the old GET Params", function () {
+
+        var result = addGetParams(url, newParams).indexOf( oldParamString ) > -1;
+        var expected = true;
+
+        chai.expect( result ).to.equal( expected );
+    });
+
+    it("Should add new GET params", function () {
+
+        var result = addGetParams(url, newParams).indexOf( newParamString ) > -1;
+        var expected = true;
+
+        chai.expect( result ).to.equal( expected );
+    });
+});
