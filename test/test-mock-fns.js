@@ -52,3 +52,34 @@ describe("#mediamanager.external.util.request(string, function[, object])", func
     });
 });
 
+describe("#parseGetParams(string)", function () {
+
+    var normalTestString = "first=daniel&last=stuessy&age=24&interests=apples,monkeys,pears&monkeys=&mane";
+    var abnormalTestString= "?" + normalTestString;
+    var testObject = {
+        first: "daniel",
+        last: "stuessy",
+        age: "24",
+        interests: "apples,monkeys,pears",
+        monkeys: "",
+        mane: ""
+    };
+
+    it("Should parse a string of GET parameters without '?' correctly", function () {
+
+        var result = parseGetParams( normalTestString );
+        var expected = testObject;
+
+        chai.expect( result ).to.deep.equal( expected );
+    });
+
+    it("Should parse all values as strings", function () {
+
+        var result = parseGetParams( normalTestString );
+
+        Object.keys(result).forEach(function (key, i) {
+
+            var value = result[key];
+        });
+    });
+});
