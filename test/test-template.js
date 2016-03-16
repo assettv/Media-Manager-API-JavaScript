@@ -18,6 +18,10 @@ apiTests.push({
     name: "getVideo",
     video: mockVars.video
 });
+apiTests.push({
+    name: "searchVideos",
+    term: "search-term"
+});
 
 apiTests.forEach(function (apiTest) {
 
@@ -39,7 +43,7 @@ apiTests.forEach(function (apiTest) {
                 onComplete: onComplete
             }, apiTest);
 
-            inject(testFn, testFnArgs, mediamanager.external.template);
+            inject(testFn, testFnArgs, mediamanager.external.template); // function, args, context
 
             chai.expect( result ).to.equal( expected );
         });

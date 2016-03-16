@@ -104,6 +104,7 @@ describe("#addGetParams(string, object)", function () {
     var oldParamString = mediamanager.external.util.serialize( oldParams );
     var newParamString = mediamanager.external.util.serialize( newParams );
     var url = "https://example.com/apples/are/cool?" + oldParamString;
+    var emptyUrl = "https://example.com/apples/are/cool";
 
     it("Should not replace the old GET Params", function () {
 
@@ -116,6 +117,14 @@ describe("#addGetParams(string, object)", function () {
     it("Should add new GET params", function () {
 
         var result = addGetParams(url, newParams).indexOf( newParamString ) > -1;
+        var expected = true;
+
+        chai.expect( result ).to.equal( expected );
+    });
+
+    it("Should add GET params if no ? set", function () {
+
+        var result = addGetParams(emptyUrl, newParams).indexOf( newParamString ) > -1;
         var expected = true;
 
         chai.expect( result ).to.equal( expected );

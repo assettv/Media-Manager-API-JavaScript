@@ -144,13 +144,18 @@ parseGetParams = function (paramString) {
  */
 addGetParams = function (url, newParams) {
 
+    url = url.trim();
     var oldParamString = url.split("?")[1] || "";
     var oldParams = parseGetParams( oldParamString );
 
-    var params = R.merge(oldParams, newParams);
-    var paramsString = "?" + mediamanager.external.util.serialize( params );
+    var params = R.reject(R.isEmpty, R.merge(oldParams, newParams));
+    var paramsString = Object.keys(params).length == 0 ? "" : "?" + mediamanager.external.util.serialize( params );
 
-    return url.replace(/\?.*$/, paramsString);
+    var hasQuestionMark = url.indexOf("?") >= url.length-1;
+
+    url = hasQuestionMark ? url.replace(/\?.*$/, paramsString) : url + paramsString;
+
+    return url;
 };
 /**
  * Get the parameters of a function.
