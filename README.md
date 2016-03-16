@@ -1,6 +1,6 @@
 # Media Manager External API - Javascript
 
-[![Build Status](https://travis-ci.org/media-manager/Media-Manager-API-JavaScript.svg?branch=master)](https://travis-ci.org/media-manager/Media-Manager-API-JavaScript)
+[![Build Status](https://travis-ci.org/media-manager/Media-Manager-API-JavaScript.svg?branch=patch/tests)](https://travis-ci.org/media-manager/Media-Manager-API-JavaScript)
 
 This library allows you to easily interact with Media Managers External APIs.
 
