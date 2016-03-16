@@ -9,6 +9,9 @@
         <!-- THE NANOAJAX JS -->
         <script src="nanoajax.js"></script>
 
+        <!-- THE MEDIA MANAGER EXTERNAL EMBED LIBRARY -->
+        <script src="https://team.getmediamanager.com/js/mm.embed.v1.min.js"></script>
+
         <!-- THE MEDIA MANAGER EXTENAL API LIBRARY -->
         <script src="mediamanager-external-library.js"></script>
 
@@ -26,7 +29,7 @@
             mediamanager.external.client("demo");
             
             //GET MOST VIEWED VIDEOS
-            mediamanager.external.template.getTemplateLatestVideos(templateID, function(videos){
+            mediamanager.external.template.getLatestVideos(templateID, function(videos){
                 console.log(videos);
             });
 

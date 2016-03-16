@@ -1,0 +1,37 @@
+{
+  "name": "media-manager-api-javascript",
+  "version": "0.0.0",
+  "description": "A JavaScript library to interact with Media Manager's REST API.",
+  "main": "mediamanager-external-library.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Media-Manager/Media-Manager-API-JavaScript"
+  },
+  "keywords": [
+    "media",
+    "manager",
+    "video",
+    "platform",
+    "api",
+    "rest"
+  ],
+  "author": "Dale Mooney and Daniel Stuessy",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Media-Manager/Media-Manager-API-JavaScript/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "nanoajax": "~0.4.3",
+    "chai": "~3.5.0",
+    "gulp-mocha": "~2.2.0",
+    "mocha": "~2.4.5",
+    "ramda": "~0.19.1"
+  }
+}
