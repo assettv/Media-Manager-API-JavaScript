@@ -1,3 +1,6 @@
 language: javascript
 rvm:
  - "0.10"
+before_script:
+  - npm install -g gulp
+script: gulp test
