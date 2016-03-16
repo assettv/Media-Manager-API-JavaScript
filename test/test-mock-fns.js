@@ -5,6 +5,7 @@
 
 var chai = require("chai");
 require("../mediamanager-external-library.js");
+require("./mock-utils.js");
 require("./mock-fns.js");
 
 describe("#mediamanager.client(string)", function () {
