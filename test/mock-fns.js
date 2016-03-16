@@ -21,7 +21,8 @@ mediamanager = global.mediamanager != null ? mediamanager: {};
  */
 mockVars = {
     template: "55cdea6f140ba095488b4581",
-    video: "55e5c930150ba085738b456b"
+    video: "55e5c930150ba085738b456b",
+    playlist: ""
 };
 
 /**
@@ -58,6 +59,9 @@ mediamanager.external.util.request = function (url, onComplete, params) {
     var requestUrl = addGetParams(url, params);
     var apis = [];
 
+    /*
+     * Template
+     */
     // most viewed videos 
     apis.push({
         url: baseURL + "/template/" + template + "/videos/mostviewed",
@@ -93,6 +97,17 @@ mediamanager.external.util.request = function (url, onComplete, params) {
         url: baseURL + "/template/" + template + "/videos/recommend/" + video,
         response: {}
     });
+
+    /*
+     * Playlist
+     */
+    // videos in playlist
+    /*
+    apis.push({
+        url: baseUrl + "/playlist/" + playlist + "/videos",
+        response: {}
+    });
+    */
 
     // find api matching url
     var api = apis.reduce(function (foundApi, api) {

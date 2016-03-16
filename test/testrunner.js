@@ -9,7 +9,7 @@ require("./test-template.js");
 
 describe("#mediamanager.client(string)", function () {
 
-    it("should just be true", function () {
+    it("Should set the client short name of the global mediamanager object", function () {
 
         var client = "demo";
         mediamanager.external.client( client );
