@@ -22,6 +22,16 @@ apiTests.push({
     name: "searchVideos",
     term: "search-term"
 });
+apiTests.push({
+    name: "getVideos"
+});
+apiTests.push({
+    name: "getAudios"
+});
+apiTests.push({
+    name: "recommendVideo",
+    videoid: mockVars.video
+});
 
 apiTests.forEach(function (apiTest) {
 
