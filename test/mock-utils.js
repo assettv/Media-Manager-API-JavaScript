@@ -105,8 +105,9 @@ setupApiTests = function (mmObject, apiTests, defaultTestArgs) {
 
         var name = apiTest.name;
         var params = apiTest.params || null;
+        var type = mmObject === mediamanager.external.template ? "template" : "playlist";
 
-        describe("#mediamanager.external.template." + name, function () {
+        describe("#mediamanager.external." + type + "." + name, function () {
 
             it("Should execute onComplete without error", function () {
 
