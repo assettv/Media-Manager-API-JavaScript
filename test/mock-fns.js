@@ -24,7 +24,11 @@ mockVars = {
     template: "55cdea6f140ba095488b4581",
     video: "55e5c930150ba085738b456b",
     audio: "55e5c930150ba085738b456b",
-    playlist: "55e07803140ba06c7e8b4574"
+    playlist: "55e07803140ba06c7e8b4574",
+    filters: {
+        perPage: 5,
+        advanced_tags: "fund_manager=apples"
+    }
 };
 
 /**
@@ -59,7 +63,7 @@ mediamanager.external.util.request = function (url, onComplete, params) {
     var playlist = mockVars.playlist;
     var video = mockVars.video;
     var audio = mockVars.audio;
-    params = params || {};
+    params = mediamanager.external.util.extend(mockVars.filters, params || {});
     var requestUrl = addGetParams(url, params);
     var apis = [];
 
@@ -78,7 +82,7 @@ mediamanager.external.util.request = function (url, onComplete, params) {
     });
     // search videos
     apis.push({
-        url: baseURL + "/template/" + template + "/video/search?" + mediamanager.external.util.serialize(params),
+        url: baseURL + "/template/" + template + "/video/search",
         response: {}
     });
     // single video 
@@ -107,29 +111,31 @@ mediamanager.external.util.request = function (url, onComplete, params) {
      */
     // videos in playlist
     apis.push({
-        url: baseURL + "/playlist/" + playlist + "/videos?" + mediamanager.external.util.serialize(params),
+        url: baseURL + "/playlist/" + playlist + "/videos",
         response: {}
     });
     // audios in playlist
     apis.push({
-        url: baseURL + "/playlist/" + playlist + "/audios?" + mediamanager.external.util.serialize(params), 
+        url: baseURL + "/playlist/" + playlist + "/audios",
         response: {}
     });
     // single audio in playlist
     apis.push({
-        url: baseURL + "/playlist/" + playlist + "/audio/" + audio + "?" + mediamanager.external.util.serialize(params),
+        url: baseURL + "/playlist/" + playlist + "/audio/" + audio,
         response: {}
     });
     // single audio in playlist
     apis.push({
-        url: baseURL + "/playlist/" + playlist + "/video/" + video + "?" + mediamanager.external.util.serialize(params),
+        url: baseURL + "/playlist/" + playlist + "/video/" + video,
         response: {}
     });
 
     // find api matching url
     var api = apis.reduce(function (foundApi, api) {
-        if (requestUrl === api.url) 
+        var url = addGetParams(api.url, params);
+        if (requestUrl === url) {
             return api;
+        }
         return foundApi;
     }, null);
 

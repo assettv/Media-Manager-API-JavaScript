@@ -28,18 +28,22 @@
             //A VIDEO ID
             var videoID = "56178e4c37cfe412428b4567";
 
+            var filters = {
+                perPage: 5
+            };
+
             //SET THE CLIENT
             mediamanager.external.client("demo");
             
             //GET MOST VIEWED VIDEOS
             mediamanager.external.template.getLatestVideos(templateID, function(videos){
                 console.log(videos);
-            });
+            }, filters);
 
             // GET VIDEOS FROM A PLAYLIST
             mediamanager.external.playlist.getVideos(playlistID, templateID, function (data) {
                 console.log(data);
-            });
+            }, filters);
 
         </script>
     </body>
