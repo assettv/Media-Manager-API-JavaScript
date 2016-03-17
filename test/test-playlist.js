@@ -45,6 +45,7 @@ apiTests.forEach(function (apiTest) {
             var testFn = mediamanager.external.playlist[ name ];
             var testFnArgs = R.merge({ 
                 template: mockVars.template,
+                filters: mockVars.filters,
                 playlist: mockVars.playlist,
                 onComplete: onComplete
             }, apiTest);

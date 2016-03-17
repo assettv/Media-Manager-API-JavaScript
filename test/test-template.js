@@ -53,6 +53,7 @@ apiTests.forEach(function (apiTest) {
             var testFn = mediamanager.external.template[ name ];
             var testFnArgs = R.merge({ 
                 template: mockVars.template,
+                filters: mockVars.filters,
                 onComplete: onComplete
             }, apiTest);
 
