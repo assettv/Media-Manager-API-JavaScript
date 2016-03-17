@@ -124,8 +124,9 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          */
         baseURL: "https://{shortname}.getmediamanager.com/api/v1/external",
         /**
-         * Global filters for all api calls.
-         * Should be set at beginning of app.
+         * Filters applied globally to each api
+         * function. Should be used SPARINGLY
+         * and with GREAT CARE!
          *
          * @type {object}
          */
@@ -192,7 +193,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          * @param {type} template
          * @returns {undefined}
          */
-        getMostViewedVideos: function (template, onComplete) {
+        getMostViewedVideos: function (template, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -203,15 +204,16 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/videos/mostviewed", onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos/mostviewed", onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        getLatestVideos: function (template, onComplete) {
+        getLatestVideos: function (template, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -222,8 +224,9 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var url = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(url + "/template/" + template + "/videos/latest", onComplete);
+            util.request(url + "/template/" + template + "/videos/latest", onComplete, filters);
         },
         /**
          * Get a single video.
@@ -232,7 +235,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          * @param function onComplete Callback function for when video was retrieved.
          * @return undefined
          */
-        getVideo: function (video, template, onComplete) {
+        getVideo: function (video, template, onComplete, filters) {
 
             if (typeof template === "undefined") {
                 console.error("Missing templateID");
@@ -247,15 +250,16 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/video/" + video, onComplete);
+            util.request(baseUrl + "/template/" + template + "/video/" + video, onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        searchVideos: function (template, term, onComplete) {
+        searchVideos: function (template, term, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -266,17 +270,19 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-
-            util.request(baseUrl + "/template/" + template + "/video/search", onComplete, {
+            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(filters, {
                 term: term
             });
+
+            util.request(baseUrl + "/template/" + template + "/video/search", onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        getVideos: function (template, onComplete) {
+        getVideos: function (template, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -287,15 +293,16 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/videos", onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos", onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        getAudios: function (template, onComplete) {
+        getAudios: function (template, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -306,15 +313,16 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/audios", onComplete);
+            util.request(baseUrl + "/template/" + template + "/audios", onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        recommendVideo: function (template, videoid, onComplete) {
+        recommendVideo: function (template, videoid, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -331,8 +339,9 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/videos/recommend/" + videoid, onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos/recommend/" + videoid, onComplete, filters);
         }
     });
 
