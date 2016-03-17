@@ -6,7 +6,7 @@
  */
 
 var R = require("ramda");
-require("../mm.external.lib.min.js");
+require("../dist/mediamanager-external-library.js");
 require("./mock-utils.js");
 
 // DEFINE IF NOT EXISTENT

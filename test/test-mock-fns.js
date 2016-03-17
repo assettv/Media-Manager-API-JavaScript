@@ -4,7 +4,7 @@
  */
 
 var chai = require("chai");
-require("../mm.external.lib.min.js");
+require("../dist/mediamanager-external-library.js");
 require("./mock-utils.js");
 require("./mock-fns.js");
 

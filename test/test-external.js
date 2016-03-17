@@ -1,6 +1,6 @@
 
 var chai = require("chai");
-require("../mediamanager-external-library.js");
+require("../dist/mediamanager-external-library.js");
 
 describe("#mediamanager.external.create( object )", function () {
 

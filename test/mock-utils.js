@@ -4,7 +4,7 @@
  */
 
 var R = require("ramda");
-require("../mm.external.lib.min.js");
+require("../dist/mediamanager-external-library.js");
 
 /**
  * Add given object

@@ -1,6 +1,6 @@
 
 var chai = require("chai");
-require("../mm.external.lib.min.js");
+require("../dist/mediamanager-external-library.js");
 
 describe("#mediamanager.external.util.serialize(object)", function () {
 

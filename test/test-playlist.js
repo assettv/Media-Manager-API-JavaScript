@@ -1,7 +1,7 @@
 
 var chai = require("chai");
 var R = require("ramda");
-require("../mm.external.lib.min.js");
+require("../dist/mediamanager-external-library.js");
 require("./mock-fns.js");
 
 var apiTests = [];
