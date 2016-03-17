@@ -124,13 +124,6 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          */
         baseURL: "https://{shortname}.getmediamanager.com/api/v1/external",
         /**
-         * Global filters for all api calls.
-         * Should be set at beginning of app.
-         *
-         * @type {object}
-         */
-        globalFilters: {},
-        /**
          * Immutable wrapper for
          * Object.create.
          *
