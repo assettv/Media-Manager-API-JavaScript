@@ -9,6 +9,25 @@ require("./mock-fns.js");
 
 var apiTests = [];
 
+apiTests.push({
+    name: "getVideos",
+    playlist: mockVars.playlist
+});
+apiTests.push({
+    name: "getAudios",
+    playlist: mockVars.playlist
+});
+apiTests.push({
+    name: "getAudio",
+    playlist: mockVars.playlist,
+    audioid: mockVars.audio
+});
+apiTests.push({
+    name: "getVideo",
+    playlist: mockVars.playlist,
+    videoid: mockVars.video
+});
+
 apiTests.forEach(function (apiTest) {
 
     var name = apiTest.name;

@@ -12,6 +12,7 @@ require("./test-mock-fns.js");
 require("./test-util.js");
 require("./test-external.js");
 require("./test-template.js");
+require("./test-playlist.js");
 
 describe("#mediamanager.client(string)", function () {
 
