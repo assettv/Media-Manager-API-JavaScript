@@ -1,7 +1,10 @@
+/*!
+ * Tests for Template API functions.
+ */
 
 var chai = require("chai");
 var R = require("ramda");
-require("../mediamanager-external-library.js");
+require("../dist/mediamanager-external-library.js");
 require("./mock-fns.js");
 
 var apiTests = [];

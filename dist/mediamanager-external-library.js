@@ -342,7 +342,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
      */
     var playlist = external.create({
         /**
-         * Get most viewed videos
+         * Get videos from a playlist.
          *
          * @param {type} template
          * @returns {undefined}
@@ -361,15 +361,15 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 return;
             }
 
-            //ADD TEMPLATE ID AS FILTER
-            mediamanager.external.addFilter("templateID", template);
-
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            var filters = {
+                templateID: template
+            };
 
             //CALL API
-            util.request(baseUrl + "/playlist/" + playlist + "/videos", onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/videos", onComplete, filters);
         },
         /**
          * Get most viewed videos
@@ -391,45 +391,15 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 return;
             }
 
-            //ADD TEMPLATE ID AS FILTER
-            mediamanager.external.addFilter("templateID", template);
-
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            var filters = {
+                templateID: template
+            };
 
             //CALL API
-            util.request(baseUrl + "/playlist/" + playlist + "/audios", onComplete);
-        },
-        /**
-         * Get most viewed videos
-         *
-         * @param {type} template
-         * @returns {undefined}
-         */
-        getVideos: function (playlist, template, onComplete) {
-
-            //IF NO TEMPLATE FOUND.
-            if (typeof template === "undefined") {
-                console.error("Missing templateID");
-                return;
-            }
-
-            //IF NO TEMPLATE FOUND.
-            if (typeof playlist === "undefined") {
-                console.error("Missing playlistID");
-                return;
-            }
-
-            //ADD TEMPLATE ID AS FILTER
-            mediamanager.external.addFilter("templateID", template);
-
-            var baseUrl = util.templateReplace(this.baseURL, {
-                shortname: this.client()
-            });
-
-            //CALL API
-            util.request(baseUrl + "/playlist/" + playlist + "/videos", onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/audios", onComplete, filters);
         },
         /**
          * Get most viewed videos
@@ -451,15 +421,15 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 return;
             }
 
-            //ADD TEMPLATE ID AS FILTER
-            mediamanager.external.addFilter("templateID", template);
-
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            var filters = {
+                templateID: template
+            };
 
             //CALL API
-            util.request(baseUrl + "/playlist/" + playlist + "/audio/" + audioid, onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/audio/" + audioid, onComplete, filters);
         },
         /**
          * Get most viewed videos
@@ -481,15 +451,15 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
                 return;
             }
 
-            //ADD TEMPLATE ID AS FILTER
-            mediamanager.external.addFilter("templateID", template);
-
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            var filters = {
+                templateID: template
+            };
 
             //CALL API
-            util.request(baseUrl + "/playlist/" + playlist + "/video/" + videoid, onComplete);
+            util.request(baseUrl + "/playlist/" + playlist + "/video/" + videoid, onComplete, filters);
         }
     });
 

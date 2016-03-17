@@ -1,10 +1,32 @@
+/*!
+ * Tests for Playlist API functions.
+ */
 
 var chai = require("chai");
 var R = require("ramda");
-require("../mediamanager-external-library.js");
+require("../dist/mediamanager-external-library.js");
 require("./mock-fns.js");
 
 var apiTests = [];
+
+apiTests.push({
+    name: "getVideos",
+    playlist: mockVars.playlist
+});
+apiTests.push({
+    name: "getAudios",
+    playlist: mockVars.playlist
+});
+apiTests.push({
+    name: "getAudio",
+    playlist: mockVars.playlist,
+    audioid: mockVars.audio
+});
+apiTests.push({
+    name: "getVideo",
+    playlist: mockVars.playlist,
+    videoid: mockVars.video
+});
 
 apiTests.forEach(function (apiTest) {
 

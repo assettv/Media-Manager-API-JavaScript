@@ -1,6 +1,10 @@
+/*!
+ * Tests for utility 
+ * functions in library.
+ */
 
 var chai = require("chai");
-require("../mediamanager-external-library.js");
+require("../dist/mediamanager-external-library.js");
 
 describe("#mediamanager.external.util.serialize(object)", function () {
 

@@ -7,20 +7,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- THE NANOAJAX JS -->
-        <script src="nanoajax.js"></script>
+        <script src="lib/nanoajax.js"></script>
 
         <!-- THE MEDIA MANAGER EXTERNAL EMBED LIBRARY -->
         <script src="https://team.getmediamanager.com/js/mm.embed.v1.min.js"></script>
 
         <!-- THE MEDIA MANAGER EXTENAL API LIBRARY -->
-        <script src="mediamanager-external-library.js"></script>
+        <script src="dist/mediamanager-external-library.js"></script>
 
     </head>
     <body>
         <script>
             
-            //A EXTERNAL TEMPLATE
+            //AN EXTERNAL TEMPLATE
             var templateID = "53a15d3e75a295166e8b4569";
+
+            //AN EXTERNAL PLAYLIST
+            var playlistID = "53d90f56150ba0996c8b4608";
             
             //A VIDEO ID
             var videoID = "56178e4c37cfe412428b4567";
@@ -31,6 +34,11 @@
             //GET MOST VIEWED VIDEOS
             mediamanager.external.template.getLatestVideos(templateID, function(videos){
                 console.log(videos);
+            });
+
+            // GET VIDEOS FROM A PLAYLIST
+            mediamanager.external.playlist.getVideos(playlistID, templateID, function (data) {
+                console.log(data);
             });
 
         </script>

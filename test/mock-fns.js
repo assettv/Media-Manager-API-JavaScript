@@ -6,7 +6,7 @@
  */
 
 var R = require("ramda");
-require("../mediamanager-external-library.js");
+require("../dist/mediamanager-external-library.js");
 require("./mock-utils.js");
 
 // DEFINE IF NOT EXISTENT
@@ -23,7 +23,8 @@ mediamanager = global.mediamanager != null ? mediamanager: {};
 mockVars = {
     template: "55cdea6f140ba095488b4581",
     video: "55e5c930150ba085738b456b",
-    playlist: ""
+    audio: "55e5c930150ba085738b456b",
+    playlist: "55e07803140ba06c7e8b4574"
 };
 
 /**
@@ -55,7 +56,9 @@ mediamanager.external.util.request = function (url, onComplete, params) {
         shortname: mediamanager.external.client()
     });
     var template = mockVars.template;
+    var playlist = mockVars.playlist;
     var video = mockVars.video;
+    var audio = mockVars.audio;
     params = params || {};
     var requestUrl = addGetParams(url, params);
     var apis = [];
@@ -103,12 +106,25 @@ mediamanager.external.util.request = function (url, onComplete, params) {
      * Playlist
      */
     // videos in playlist
-    /*
     apis.push({
-        url: baseUrl + "/playlist/" + playlist + "/videos",
+        url: baseURL + "/playlist/" + playlist + "/videos?" + mediamanager.external.util.serialize(params),
         response: {}
     });
-    */
+    // audios in playlist
+    apis.push({
+        url: baseURL + "/playlist/" + playlist + "/audios?" + mediamanager.external.util.serialize(params), 
+        response: {}
+    });
+    // single audio in playlist
+    apis.push({
+        url: baseURL + "/playlist/" + playlist + "/audio/" + audio + "?" + mediamanager.external.util.serialize(params),
+        response: {}
+    });
+    // single audio in playlist
+    apis.push({
+        url: baseURL + "/playlist/" + playlist + "/video/" + video + "?" + mediamanager.external.util.serialize(params),
+        response: {}
+    });
 
     // find api matching url
     var api = apis.reduce(function (foundApi, api) {
@@ -121,29 +137,4 @@ mediamanager.external.util.request = function (url, onComplete, params) {
         onComplete( api.response );
     else
         throw new ReferenceError("mock-fns: request: api not found for " + requestUrl);
-};
-
-/******************************************
- * Utility functions for mock-fns, only.
- *****************************************/
-/**
- * Parse a string of GET parameters 
- * (without a starting "?"), into 
- * an object with name:value pairs
- * of the params.
- *
- * @param {string} paramString String of GET parameters to parse into an object.
- * @return {object} Object of parsed GET params.
- */
-parseGetParams = function (paramString) {
-    return paramString.split("&").reduce(function (paramObject, pairString) {
-
-        var pair = pairString.split("=");
-        var key = pair[0];
-        var value = pair[1] || "";
-
-        paramObject[key] = value;
-
-        return paramObject;
-    }, {});
 };
