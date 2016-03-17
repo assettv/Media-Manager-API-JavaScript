@@ -138,28 +138,3 @@ mediamanager.external.util.request = function (url, onComplete, params) {
     else
         throw new ReferenceError("mock-fns: request: api not found for " + requestUrl);
 };
-
-/******************************************
- * Utility functions for mock-fns, only.
- *****************************************/
-/**
- * Parse a string of GET parameters 
- * (without a starting "?"), into 
- * an object with name:value pairs
- * of the params.
- *
- * @param {string} paramString String of GET parameters to parse into an object.
- * @return {object} Object of parsed GET params.
- */
-parseGetParams = function (paramString) {
-    return paramString.split("&").reduce(function (paramObject, pairString) {
-
-        var pair = pairString.split("=");
-        var key = pair[0];
-        var value = pair[1] || "";
-
-        paramObject[key] = value;
-
-        return paramObject;
-    }, {});
-};
