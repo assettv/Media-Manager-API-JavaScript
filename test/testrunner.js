@@ -1,3 +1,9 @@
+/*!
+ * Setup all tests.
+ * At the bottom the
+ * tests for mediamanager.client
+ * are described.
+ */
 
 var chai = require("chai");
 require("../dist/mediamanager-external-library.js");

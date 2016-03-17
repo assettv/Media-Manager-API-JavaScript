@@ -1,3 +1,7 @@
+/*!
+ * Tests for functions in
+ * mediamanager.external object.
+ */
 
 var chai = require("chai");
 require("../dist/mediamanager-external-library.js");

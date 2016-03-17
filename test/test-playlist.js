@@ -1,3 +1,6 @@
+/*!
+ * Tests for Playlist API functions.
+ */
 
 var chai = require("chai");
 var R = require("ramda");

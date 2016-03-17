@@ -1,3 +1,6 @@
+/*!
+ * Tests for Template API functions.
+ */
 
 var chai = require("chai");
 var R = require("ramda");
