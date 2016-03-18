@@ -57,16 +57,13 @@ describe("#mediamanager.external.addFilter(string, mixed)", function () {
     /*
      * Tests for each filter!
      */
-    Object.keys(filters).forEach(function (key) {
+    it("Should add a given filter to the prototype", function () {
 
-        var value = filters[key];
+        var firstKey = Object.keys(filters)[0];
+        var value = filters[ firstKey ];
+        var result = mediamanager.external.addFilter(firstKey, value).globalFilters[ firstKey ];
+        var expected = value;
 
-        it("Should add the given filter", function () {
-
-            var result = mediamanager.external.addFilter(key, value).globalFilters[ key ];
-            var expected = value;
-
-            chai.expect( result ).to.equal( expected );
-        });
+        chai.expect( result ).to.equal( expected );
     });
 });
