@@ -51,7 +51,6 @@ describe("#mediamanager.external.addFilter(string, mixed)", function () {
         var expected = mediamanager.external.addFilter('perPage', filters.perPage);
         var result = mediamanager.external.addFilter('perPage', filters.perPage);
 
-        chai.expect( result ).to.deep.equal( expected );
         chai.expect( result ).to.not.equal( expected );
     });
 
@@ -69,19 +68,5 @@ describe("#mediamanager.external.addFilter(string, mixed)", function () {
 
             chai.expect( result ).to.equal( expected );
         });
-    });
-
-    it("The external object should have all filters", function () {
-
-        var result = Object.keys(filters)
-        .reduce(function (external, key) {
-
-            return external.addFilter(key, filters[key]);
-        }, mediamanager.external)
-        .globalFilters;
-
-        var expected = filters;
-
-        chai.expect( result ).to.deep.equal( expected );
     });
 });
