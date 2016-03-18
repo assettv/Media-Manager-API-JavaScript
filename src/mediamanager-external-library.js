@@ -1,6 +1,7 @@
-mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
 
-;(function (mediamanager) {
+;(function () {
+
+    mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
 
     /**
      * Set of utility functions
@@ -124,21 +125,44 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          */
         baseURL: "https://{shortname}.getmediamanager.com/api/v1/external",
         /**
-         * Global filters for all api calls.
-         * Should be set at beginning of app.
+         * Filters applied globally to each api
+         * function. Should be used SPARINGLY
+         * and with GREAT CARE!
          *
          * @type {object}
          */
         globalFilters: {},
         /**
+         * Return a mediamanager.external object
+         * with a new filter added to its
+         * globalFilters property.
+         *
+         * @param {string} key Key of the filter to add.
+         * @param {string} value Value of the filter to add.
+         * @return {object} A new instance of the mediamanager.external object with different globalFilters.
+         */
+        addFilter: function (key, value) {
+
+            var newGlobalFilters = util.clone(this.globalFilters);
+            newGlobalFilters[ key ] = value;
+
+            var newExternalSpec = util.clone(this);
+
+            var newExternalProto = util.clone(external);
+            newExternalProto.globalFilters = newGlobalFilters;
+
+            return external.create(newExternalSpec, newExternalProto);
+        },
+        /**
          * Immutable wrapper for
          * Object.create.
          *
          * @param {object} spec An Object to use as specification.
+         * @param {object} proto Optional prototype for the instance;
          * @return {object} An immutable object with values of spec and prototype of proto.
          */
-        create: function (spec) {
-            var created = Object.create(this);
+        create: function (spec, proto) {
+            var created = Object.create(proto || this);
             created = Object.keys(spec).reduce(function (created, key) {
                 var value = spec[key];
                 created[key] = value;
@@ -192,7 +216,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          * @param {type} template
          * @returns {undefined}
          */
-        getMostViewedVideos: function (template, onComplete) {
+        getMostViewedVideos: function (template, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -203,15 +227,16 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/videos/mostviewed", onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos/mostviewed", onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        getLatestVideos: function (template, onComplete) {
+        getLatestVideos: function (template, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -222,8 +247,9 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var url = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(url + "/template/" + template + "/videos/latest", onComplete);
+            util.request(url + "/template/" + template + "/videos/latest", onComplete, filters);
         },
         /**
          * Get a single video.
@@ -232,7 +258,7 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
          * @param function onComplete Callback function for when video was retrieved.
          * @return undefined
          */
-        getVideo: function (video, template, onComplete) {
+        getVideo: function (video, template, onComplete, filters) {
 
             if (typeof template === "undefined") {
                 console.error("Missing templateID");
@@ -247,15 +273,16 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/video/" + video, onComplete);
+            util.request(baseUrl + "/template/" + template + "/video/" + video, onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        searchVideos: function (template, term, onComplete) {
+        searchVideos: function (template, term, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -266,17 +293,19 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-
-            util.request(baseUrl + "/template/" + template + "/video/search", onComplete, {
+            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(filters, {
                 term: term
             });
+
+            util.request(baseUrl + "/template/" + template + "/video/search", onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        getVideos: function (template, onComplete) {
+        getVideos: function (template, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -287,15 +316,16 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/videos", onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos", onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        getAudios: function (template, onComplete) {
+        getAudios: function (template, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -306,15 +336,16 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/audios", onComplete);
+            util.request(baseUrl + "/template/" + template + "/audios", onComplete, filters);
         },
         /**
          * Get most viewed videos
          * @param {type} template
          * @returns {undefined}
          */
-        recommendVideo: function (template, videoid, onComplete) {
+        recommendVideo: function (template, videoid, onComplete, filters) {
 
             //IF NO TEMPLATE FOUND.
             if (typeof template === "undefined") {
@@ -331,8 +362,9 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
+            filters = util.extend(this.globalFilters, filters);
 
-            util.request(baseUrl + "/template/" + template + "/videos/recommend/" + videoid, onComplete);
+            util.request(baseUrl + "/template/" + template + "/videos/recommend/" + videoid, onComplete, filters);
         }
     });
 
@@ -475,6 +507,6 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
         util: util
     });
 
-})(mediamanager);
+})();
 
 

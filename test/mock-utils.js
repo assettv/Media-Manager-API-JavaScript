@@ -4,6 +4,7 @@
  */
 
 var R = require("ramda");
+var chai = require("chai");
 require("../dist/mediamanager-external-library.js");
 
 
@@ -90,4 +91,38 @@ inject = function (fn, depVals, context) {
     }, fnDepNames);
 
     return fn.apply(fnContext, fnDeps);
+};
+
+/**
+ * Setup tests for each given api function.
+ *
+ * @param {object} mmObject The media manager object holding the api functions to test.
+ * @param {array} apiTests List of apis to test.
+ * @return {undefined}
+ */
+setupApiTests = function (mmObject, apiTests, defaultTestArgs) {
+    apiTests.forEach(function (apiTest) {
+
+        var name = apiTest.name;
+        var params = apiTest.params || null;
+        var type = mmObject === mediamanager.external.template ? "template" : "playlist";
+
+        describe("#mediamanager.external." + type + "." + name, function () {
+
+            it("Should execute onComplete without error", function () {
+
+                var expected = true;
+                var result = false;
+                defaultTestArgs.onComplete = function () {
+                    result = expected;
+                };
+                var testFn = mmObject[ name ];
+                var testFnArgs = R.merge(defaultTestArgs, apiTest);
+
+                inject(testFn, testFnArgs, mediamanager.external.template); // function, args, context
+
+                chai.expect( result ).to.equal( expected );
+            });
+        });
+    });
 };
