@@ -4,6 +4,8 @@
  */
 
 var chai = require("chai");
+require("./mock-utils.js");
+require('./mock-fns.js');
 require("../dist/mediamanager-external-library.js");
 
 describe("#mediamanager.external.create( object )", function () {
@@ -34,5 +36,52 @@ describe("#mediamanager.external.create( object )", function () {
         chai.expect( result ).to.deep.equal( expected ); // check for same values
         chai.expect( resultProto ).to.equal( mediamanager.external ); // check for same reference
         chai.expect( resultProto ).to.deep.equal( mediamanager.external ); // check for same values
+    });
+});
+
+describe("#mediamanager.external.addFilter(string, mixed)", function () {
+
+    var filters = {
+        perPage: 5,
+        primate: "Homo sapien"
+    };
+
+    it("Should return a new instance of the external object with the given filters", function () {
+
+        var expected = mediamanager.external.addFilter('perPage', filters.perPage);
+        var result = mediamanager.external.addFilter('perPage', filters.perPage);
+
+        chai.expect( result ).to.deep.equal( expected );
+        chai.expect( result ).to.not.equal( expected );
+    });
+
+    /*
+     * Tests for each filter!
+     */
+    Object.keys(filters).forEach(function (key) {
+
+        var value = filters[key];
+
+        it("Should add the given filter", function () {
+
+            var result = mediamanager.external.addFilter(key, value).globalFilters[ key ];
+            var expected = value;
+
+            chai.expect( result ).to.equal( expected );
+        });
+    });
+
+    it("The external object should have all filters", function () {
+
+        var result = Object.keys(filters)
+        .reduce(function (external, key) {
+
+            return external.addFilter(key, filters[key]);
+        }, mediamanager.external)
+        .globalFilters;
+
+        var expected = filters;
+
+        chai.expect( result ).to.deep.equal( expected );
     });
 });
