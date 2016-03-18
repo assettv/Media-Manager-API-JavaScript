@@ -57,7 +57,7 @@ A list of the template APIs that can be used on the external API.
 You can get the most viewed videos on template
 
 ``` javascript
-mediamanager.external.template.getMostViewedVideos("{template_id"}, Function onComplete);
+mediamanager.external.template.getMostViewedVideos("{template_id"}, Function onComplete, filters);
 ```
 
 ### Recommend video
@@ -65,7 +65,7 @@ mediamanager.external.template.getMostViewedVideos("{template_id"}, Function onC
 This will return a recommendation based on another video.
 
 ``` javascript
-mediamanager.external.template.recommendVideo("{template_id"}, "{video_id}", Function onComplete);
+mediamanager.external.template.recommendVideo("{template_id"}, "{video_id}", Function onComplete, filters);
 ```
 
 ### Search videos
@@ -73,13 +73,13 @@ mediamanager.external.template.recommendVideo("{template_id"}, "{video_id}", Fun
 Search videos on given template. 
 
 ``` javascript
-mediamanager.external.template.searchVideos("{template_id"}, "{term}", Function onComplete);
+mediamanager.external.template.searchVideos("{template_id"}, "{term}", Function onComplete, filters);
 ```
 
 You can also pass an ``array`` of search terms also.
 
 ``` javascript
-mediamanager.external.template.searchVideos("{template_id"}, ["term1","term2"], Function onComplete);
+mediamanager.external.template.searchVideos("{template_id"}, ["term1","term2"], Function onComplete, filters);
 ```
 
 ### Get videos
@@ -87,7 +87,7 @@ mediamanager.external.template.searchVideos("{template_id"}, ["term1","term2"], 
 Get all videos on a given template.
 
 ``` javascript
-mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
+mediamanager.external.template.getVideos("{template_id"}, Function onComplete, filters);
 ```
 
 ### Get audios
@@ -95,7 +95,7 @@ mediamanager.external.template.getVideos("{template_id"}, Function onComplete);
 Get all audios on a given template.
 
 ``` javascript
-mediamanager.external.template.getAudios("{template_id"}, Function onComplete);
+mediamanager.external.template.getAudios("{template_id"}, Function onComplete, filters);
 ```
 
 ## Playlists
@@ -107,7 +107,7 @@ The playlist APIs allow you to get content on a external template, but filter th
 Get all audios on a given template and playlist.
 
 ``` javascript
-mediamanager.external.playlist.getAudios("{playlist_id}","{template_id"}, Function onComplete);
+mediamanager.external.playlist.getAudios("{playlist_id}","{template_id"}, Function onComplete, filters);
 ```
 
 ### Get videos
@@ -115,7 +115,7 @@ mediamanager.external.playlist.getAudios("{playlist_id}","{template_id"}, Functi
 Get all audios on a given template and playlist.
 
 ``` javascript
-mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"}, Function onComplete);
+mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"}, Function onComplete, filters);
 ```
 
 ### Get video
@@ -123,7 +123,7 @@ mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"}, Functi
 Get video on a given template and playlist.
 
 ``` javascript
-mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{video_id}", Function onComplete);
+mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{video_id}", Function onComplete, filters);
 ```
 
 ### Get audio
@@ -131,22 +131,22 @@ mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{video
 Get audio on a given template and playlist.
 
 ``` javascript
-mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{audio_id}", Function onComplete);
+mediamanager.external.playlist.getVideos("{playlist_id}","{template_id"},"{audio_id}", Function onComplete, filters);
 ```
 
-## Filters
+## Global Filters
 
-You can also add filters to the API calls by using the ``addFilter`` function. This allows you to filter down your content further.
+You can also add filters to the API calls by using the ``addFilter`` function. This allows you to filter down your content further. The ``addFilter`` function returns a new instance of the mediamanager.external object with the filterName and filterValue added to its globalFilters property.
 
 ``` javascript
-mediamanager.external.addFilter("{filterName}", "{filterValue}");
+mediamanager.external = mediamanager.external.addFilter("{filterName}", "{filterValue}");
 ```
 
 **e.g.**
 
 ``` javascript
 //CHANGE THE PAGER TO BE 2 PER PAGE.
-mediamanager.external.addFilter("perPage",2);
+mediamanager.external = mediamanager.external.addFilter("perPage",2);
 ```
 
 ## Responses
