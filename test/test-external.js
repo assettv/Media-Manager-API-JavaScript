@@ -36,3 +36,35 @@ describe("#mediamanager.external.create( object )", function () {
         chai.expect( resultProto ).to.deep.equal( mediamanager.external ); // check for same values
     });
 });
+
+describe("#mediamanager.external.addFilter(string, mixed)", function () {
+
+    var filters = {
+        perPage: 5,
+        primate: "Homo sapien"
+    };
+
+    it("Should return a new instance of the external object with the given filters", function () {
+
+        var expected = mediamanager.external.addFilter('perPage', filters.perPage);
+        var result = mediamanager.external.addFilter('perPage', filters.perPage);
+
+        chai.expect( result ).to.not.equal( expected );
+    });
+
+    /*
+     * Tests for each filter!
+     */
+    Object.keys(filters).forEach(function (key) {
+
+        var value = filters[key];
+
+        it("Should add the given filter", function () {
+
+            var result = mediamanager.external.addFilter(key, value).globalFilters[ key ];
+            var expected = value;
+
+            chai.expect( result ).to.equal( expected );
+        });
+    });
+});
