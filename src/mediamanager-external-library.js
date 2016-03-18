@@ -133,14 +133,36 @@
          */
         globalFilters: {},
         /**
+         * Return a mediamanager.external object
+         * with a new filter added to its
+         * globalFilters property.
+         *
+         * @param {string} key Key of the filter to add.
+         * @param {string} value Value of the filter to add.
+         * @return {object} A new instance of the mediamanager.external object with different globalFilters.
+         */
+        addFilter: function (key, value) {
+
+            var newGlobalFilters = util.clone(this.globalFilters);
+            newGlobalFilters[ key ] = value;
+
+            var newExternalSpec = util.clone(this);
+
+            var newExternalProto = util.clone(external);
+            newExternalProto.globalFilters = newGlobalFilters;
+
+            return external.create(newExternalSpec, newExternalProto);
+        },
+        /**
          * Immutable wrapper for
          * Object.create.
          *
          * @param {object} spec An Object to use as specification.
+         * @param {object} proto Optional prototype for the instance;
          * @return {object} An immutable object with values of spec and prototype of proto.
          */
-        create: function (spec) {
-            var created = Object.create(this);
+        create: function (spec, proto) {
+            var created = Object.create(proto || this);
             created = Object.keys(spec).reduce(function (created, key) {
                 var value = spec[key];
                 created[key] = value;
