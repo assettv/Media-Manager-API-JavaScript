@@ -1,6 +1,7 @@
-mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
 
-;(function (mediamanager) {
+;(function () {
+
+    mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
 
     /**
      * Set of utility functions
@@ -484,6 +485,6 @@ mediamanager = (typeof mediamanager !== "undefined") ? mediamanager : {};
         util: util
     });
 
-})(mediamanager);
+})();
 
 
