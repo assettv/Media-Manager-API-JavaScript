@@ -37,6 +37,15 @@ describe("#mediamanager.external.create( object )", function () {
         chai.expect( resultProto ).to.equal( mediamanager.external ); // check for same reference
         chai.expect( resultProto ).to.deep.equal( mediamanager.external ); // check for same values
     });
+
+    it("Should create two instances with the same prototype", function () {
+
+        var spec = {};
+        var oneInstancePrototype = Object.getPrototypeOf( mediamanager.external.create( spec ) );
+        var twoInstancePrototype = Object.getPrototypeOf( mediamanager.external.create( spec ) );
+
+        chai.expect( oneInstancePrototype ).to.equal( twoInstancePrototype );
+    });
 });
 
 describe("#mediamanager.external.addFilter(string, mixed)", function () {
@@ -45,6 +54,8 @@ describe("#mediamanager.external.addFilter(string, mixed)", function () {
         perPage: 5,
         primate: "Homo sapien"
     };
+    var firstKey = Object.keys(filters)[0];
+    var value = filters[ firstKey ];
 
     it("Should return a new instance of the external object with the given filters", function () {
 
@@ -54,19 +65,23 @@ describe("#mediamanager.external.addFilter(string, mixed)", function () {
         chai.expect( result ).to.not.equal( expected );
     });
 
-    /*
-     * Tests for each filter!
-     */
-    Object.keys(filters).forEach(function (key) {
+    it("Should add a given filter to the prototype", function () {
 
-        var value = filters[key];
+        var newExternal = mediamanager.external.addFilter(firstKey, value);
+        var result = Object.getPrototypeOf( newExternal ).globalFilters[ firstKey ];
+        var expected = value;
 
-        it("Should add the given filter", function () {
+        chai.expect( result ).to.equal( expected );
+    });
 
-            var result = mediamanager.external.addFilter(key, value).globalFilters[ key ];
-            var expected = value;
+    it("Should have the same prototype as the external.template and playlist objects", function () {
 
-            chai.expect( result ).to.equal( expected );
-        });
+        var newExternal = mediamanager.external.addFilter(firstKey, value);
+        var result = Object.getPrototypeOf( newExternal );
+        var templateProto = Object.getPrototypeOf( newExternal.template );
+        var playlistProto = Object.getPrototypeOf( newExternal.playlist );
+
+        chai.expect( result ).to.equal( templateProto );
+        chai.expect( result ).to.equal( playlistProto );
     });
 });

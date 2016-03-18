@@ -143,15 +143,19 @@
          */
         addFilter: function (key, value) {
 
-            var newGlobalFilters = util.clone(this.globalFilters);
-            newGlobalFilters[ key ] = value;
+            var filters = util.clone(this.globalFilters);
+            filters[ key ] = value;
 
-            var newExternalSpec = util.clone(this);
+            var spec = util.clone(this);
+            
+            var proto = util.clone(Object.getPrototypeOf(this));
+            proto.globalFilters = filters;
 
-            var newExternalProto = util.clone(external);
-            newExternalProto.globalFilters = newGlobalFilters;
-
-            return external.create(newExternalSpec, newExternalProto);
+            return proto.create({
+                template: proto.create(templateSpec),
+                playlist: proto.create(playlistSpec),
+                util: util
+            });
         },
         /**
          * Immutable wrapper for
@@ -210,7 +214,7 @@
      *
      * @type {object}
      */
-    var template = external.create({
+    var templateSpec = {
         /**
          * Get most viewed videos
          * @param {type} template
@@ -366,13 +370,13 @@
 
             util.request(baseUrl + "/template/" + template + "/videos/recommend/" + videoid, onComplete, filters);
         }
-    });
+    };
 
     /**
      * the playlist object
      * @returns {undefined}
      */
-    var playlist = external.create({
+    var playlistSpec = {
         /**
          * Get videos from a playlist.
          *
@@ -493,7 +497,7 @@
             //CALL API
             util.request(baseUrl + "/playlist/" + playlist + "/video/" + videoid, onComplete, filters);
         }
-    });
+    };
 
     /**
      * Export object of Media Manager
@@ -502,8 +506,8 @@
      * @type {object}
      */
     mediamanager.external = external.create({
-        template: template,
-        playlist: playlist,
+        template: external.create(templateSpec),
+        playlist: external.create(playlistSpec),
         util: util
     });
 
