@@ -94,15 +94,15 @@ A list of the template APIs that can be used on the external API.
 You can get the most viewed videos on template
 
 ``` javascript
-mediamanager.external.template.getMostViewedVideos({template_id}, {onComplete}, {filters});
+mediamanager.external.template.getMostViewedVideos(template_id, onComplete, filters);
 ```
 
 **Params**
-- `{template_id}`: String
+- `template_id`: String
     - A Media Manager Template ID.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object 
+- `filters`: Object
     - Filters to apply to the API request.
 
 ### Recommend video
@@ -110,17 +110,17 @@ mediamanager.external.template.getMostViewedVideos({template_id}, {onComplete}, 
 This will return a recommendation based on another video.
 
 ``` javascript
-mediamanager.external.template.recommendVideo({template_id}, {video_id}, {onComplete}, {filters});
+mediamanager.external.template.recommendVideo(template_id, video_id, onComplete, filters);
 ```
 
 **Params**
-- `{template_id}`: String 
+- `template_id`: String 
     - A Media Manager Template ID.
-- `{video_id}`: String
+- `video_id`: String
     - A Media Manager Video ID.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object
+- `filters`: Object
     - Filters to apply to the API request.
 
 ### Search videos
@@ -128,18 +128,18 @@ mediamanager.external.template.recommendVideo({template_id}, {video_id}, {onComp
 Search videos on given template. 
 
 ``` javascript
-mediamanager.external.template.searchVideos({template_id}, {term}, {onComplete}, {filters});
+mediamanager.external.template.searchVideos(template_id, term, onComplete, filters);
 ```
 
 **Params**
-- `{template_id}`: String
+- `template_id`: String
     - A Media Manager Template ID.
-- `{term}`: String | Array(String)
+- `term`: String | Array(String)
     - A string with the term by which to search.
     - Or an array of strings, each with a term by which to search.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object
+- `filters`: Object
     - Filters to apply to the API request.
 
 ### Get videos
@@ -147,15 +147,15 @@ mediamanager.external.template.searchVideos({template_id}, {term}, {onComplete},
 Get all videos on a given template.
 
 ``` javascript
-mediamanager.external.template.getVideos({template_id}, {onComplete}, {filters});
+mediamanager.external.template.getVideos(template_id, onComplete, filters);
 ```
 
 **Params**
-- `{template_id}`: String
+- `template_id`: String
     - A Media Manager Template ID.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object
+- `filters`: Object
     - Filters to apply to the API request.
 
 ### Get audios
@@ -163,15 +163,15 @@ mediamanager.external.template.getVideos({template_id}, {onComplete}, {filters})
 Get all audios on a given template.
 
 ``` javascript
-mediamanager.external.template.getAudios({template_id}, {onComplete}, {filters});
+mediamanager.external.template.getAudios(template_id, onComplete, filters);
 ```
 
 **Params**
-- `{template_id}`: String
+- `template_id`: String
     - A Media Manager Template ID.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object
+- `filters`: Object
     - Filters to apply to the API request.
 
 ## Playlists
@@ -183,17 +183,17 @@ The playlist APIs allow you to get content on a external template, but filter th
 Get all audio on a given template and playlist.
 
 ``` javascript
-mediamanager.external.playlist.getAudios({playlist_id}, {template_id}, {onComplete}, {filters});
+mediamanager.external.playlist.getAudios(playlist_id, template_id, onComplete, filters);
 ```
 
 **Params**
-- `{playlist_id}`: String
+- `playlist_id`: String
     - A Media Manager Playlist ID.
-- `{template_id}`: String
+- `template_id`: String
     - A Media Manager Template ID.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object
+- `filters`: Object
     - Filters to apply to the API request.
 
 ### Get videos
@@ -201,17 +201,17 @@ mediamanager.external.playlist.getAudios({playlist_id}, {template_id}, {onComple
 Get all audios on a given template and playlist.
 
 ``` javascript
-mediamanager.external.playlist.getVideos({playlist_id}, {template_id}, {onComplete}, {filters});
+mediamanager.external.playlist.getVideos(playlist_id, template_id, onComplete, filters);
 ```
 
 **Params**
-- `{playlist_id}`: String
+- `playlist_id`: String
     - A Media Manager Playlist ID.
-- `{template_id}`: String
+- `template_id`: String
     - A Media Manager Template ID.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object
+- `filters`: Object
     - Filters to apply to the API request.
 
 ### Get video
@@ -219,19 +219,19 @@ mediamanager.external.playlist.getVideos({playlist_id}, {template_id}, {onComple
 Get video on a given template and playlist.
 
 ``` javascript
-mediamanager.external.playlist.getVideos({playlist_id}, {template_id}, {video_id}, {onComplete}, {filters});
+mediamanager.external.playlist.getVideos(playlist_id, template_id, video_id, onComplete, filters);
 ```
 
 **Params**
-- `{playlist_id}`: String
+- `playlist_id`: String
     - A Media Manager Playlist ID.
-- `{template_id}`: String
+- `template_id`: String
     - A Media Manager Template ID.
-- `{video_id}`: String
+- `video_id`: String
     - A Media Manager Video ID.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object
+- `filters`: Object
     - Filters to apply to the API request.
 
 ### Get audio
@@ -239,34 +239,34 @@ mediamanager.external.playlist.getVideos({playlist_id}, {template_id}, {video_id
 Get audio on a given template and playlist.
 
 ``` javascript
-mediamanager.external.playlist.getAudio({playlist_id}, {template_id}, {audio_id}, {onComplete}, {filters});
+mediamanager.external.playlist.getAudio(playlist_id, template_id, audio_id, onComplete, filters);
 ```
 
 **Params**
-- `{playlist_id}`: String
+- `playlist_id`: String
     - A Media Manager Playlist ID.
-- `{template_id}`: String
+- `template_id`: String
     - A Media Manager Template ID.
-- `{audio_id}`: String
+- `audio_id`: String
     - A Media Manager Audio ID.
-- `{onComplete}`: Function
+- `onComplete`: Function
     - Callback for when template videos were retrieved.
-- `{filters}`: Object
+- `filters`: Object
     - Filters to apply to the API request.
 
 
 ### Global Filters
 
-You can also add filters to the API calls by using the ``addFilter`` function. This allows you to filter down your content further. The ``addFilter`` function returns a new instance of the mediamanager.external object with the filterName and filterValue added to its globalFilters property.
+You can also add filters to the API calls by using the `addFilter` function. This allows you to filter down your content further. The `addFilter` function returns a new instance of the mediamanager.external object with the filterName and filterValue added to its globalFilters property.
 
 ``` javascript
-mediamanager.external = mediamanager.external.addFilter({filterName}, {filterValue});
+mediamanager.external = mediamanager.external.addFilter(filterName, filterValue);
 ```
 
 **Params**
-- `{filterName}`: String
+- `filterName`: String
     - The key or name of a filter to apply.
-- `{filterValue}`: String | Number
+- `filterValue`: String | Number
     - The value of a filter to apply.
 
 **Example**
