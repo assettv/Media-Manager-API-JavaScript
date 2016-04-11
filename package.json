@@ -22,7 +22,7 @@
     "rest"
   ],
   "author": "Dale Mooney and Daniel Stuessy",
-  "license": "BSD-2-Clause",
+  "license": "license in file LICENSE.md",
   "bugs": {
     "url": "https://github.com/Media-Manager/Media-Manager-API-JavaScript/issues"
   },
