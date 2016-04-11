@@ -191,13 +191,13 @@
          * EMBED CONTENT VIA EMBED SCRIPT
          *
          * @param {string} externalTemplate External template.
-         * @param {element} element Element to embed into.
+         * @param {string} elementId Element ID of element to embed into.
          * @return {undefined}
          */
-        embed: function (externalTemplate, element) {
+        embed: function (externalTemplate, elementId) {
             if (typeof mediamanager.embed !== "undefined") {
                 if (typeof externalTemplate !== "undefined") {
-                    mediamanager.embed(element);
+                    mediamanager.embed(elementId);
                     ping(externalTemplate, mediamanager.id);
                     return;
                 }
