@@ -199,7 +199,6 @@
             if (typeof mediamanager.embed !== "undefined") {
                 if (typeof externalTemplate !== "undefined") {
                     mediamanager.embed(element);
-                    ping(externalTemplate, mediamanager.id);
                     return;
                 }
                 console.error("No templateID passed");
