@@ -2,15 +2,27 @@
 
 [![Build Status](https://travis-ci.org/media-manager/Media-Manager-API-JavaScript.svg?branch=patch/tests)](https://travis-ci.org/media-manager/Media-Manager-API-JavaScript)
 
-This library allows you to easily interact with Media Managers External APIs.
+This library allows you to easily interact with Media Manager's External APIs.
 
 ## Setting up
+
+### Script
 
 First you must add the library code to the ``head`` tag.
 
 ``` html
-<script src="mm.external.lib.min.js"></script>
+<script src="mediamanager-external-library-min.js"></script>
 ```
+
+### Dependencies
+
+Each dependency listed here needs to be added before the Media Manager External Libarary script, like in the example above.
+
+- Media Manager embed library*
+- [nanoajax](https://github.com/yanatan16/nanoajax)
+
+*The Media Manager embed library can be retrieved from this link `https://{shortname}.getmediamanager.com/js/mm.embed.v1.min.js`, where `{shortname}` is your Media Manager shortname. 
+This is the subdomain of your Media Manager dashboard URL: `https://{shortname}.getmediamanager.com/`.
 
 ### Setting client
 
@@ -22,7 +34,7 @@ mediamanager.external.client("{shortname}");
 
 ### onComplete
 
-All API functions can be passed a ``onComplete`` function. 
+All API functions can be passed a `onComplete` function. 
 
 ``` javascript
 function(json, code, request){
@@ -32,15 +44,13 @@ function(json, code, request){
 
 ## Embedding
 
-You may wish to record analytics against your external template so that it appears under the ``SHOW template``. You can make sure this happens by using the ``external.embed()`` function instead of ``mediamanager.embed()``.
+You may wish to record analytics against your external template so that it appears under the `SHOW template`. You can make sure this happens by using the `mediamanager.external.embed()` function instead of `mediamanager.embed()`.
 
 ``` javascript
 mdiamanager.external.embed("{external_template_id}","{element_id}"); //element_id is not required
 ```
 
 If you do not embed this way, then all analytics will be recorded against the template you provided using ``mediamanager.template()`` only.
-
-**Note::** In order to use this function. You must first include your Media Manager embed script.
 
 ``` html
 <script src="https://{shortname}.getmediamanager.com/js/mm.embed.v1.min.js"></script>
