@@ -190,16 +190,14 @@
         /** 
          * EMBED CONTENT VIA EMBED SCRIPT
          *
-         * @deprecated
          * @param {string} externalTemplate External template.
-         * @param {element} element Element to embed into.
+         * @param {string} elementId Element ID of element to embed into.
          * @return {undefined}
          */
-        embed: function (externalTemplate, element) {
+        embed: function (externalTemplate, elementId) {
             if (typeof mediamanager.embed !== "undefined") {
                 if (typeof externalTemplate !== "undefined") {
-                    mediamanager.embed(element);
-                    ping(externalTemplate, mediamanager.id);
+                    mediamanager.embed(elementId);
                     return;
                 }
                 console.error("No templateID passed");
