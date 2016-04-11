@@ -190,7 +190,6 @@
         /** 
          * EMBED CONTENT VIA EMBED SCRIPT
          *
-         * @deprecated
          * @param {string} externalTemplate External template.
          * @param {element} element Element to embed into.
          * @return {undefined}
