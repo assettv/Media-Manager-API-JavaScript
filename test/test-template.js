@@ -41,3 +41,8 @@ setupApiTests(mediamanager.external.template, apiTests, {
     template: mockVars.template,
     filters: mockVars.filters
 });
+
+setupApiTests(mediamanager.external.template, apiTests, {
+    template: mockVars.template,
+    filters: undefined
+});
