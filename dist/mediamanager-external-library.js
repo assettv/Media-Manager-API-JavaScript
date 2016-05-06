@@ -229,7 +229,7 @@
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(this.globalFilters, filters || {});
 
             util.request(baseUrl + "/template/" + template + "/videos/mostviewed", onComplete, filters);
         },
@@ -249,7 +249,7 @@
             var url = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(this.globalFilters, filters || {});
 
             util.request(url + "/template/" + template + "/videos/latest", onComplete, filters);
         },
@@ -275,7 +275,7 @@
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(this.globalFilters, filters || {});
 
             util.request(baseUrl + "/template/" + template + "/video/" + video, onComplete, filters);
         },
@@ -295,7 +295,7 @@
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(this.globalFilters, filters || {});
             filters = util.extend(filters, {
                 term: term
             });
@@ -318,7 +318,7 @@
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(this.globalFilters, filters || {});
 
             util.request(baseUrl + "/template/" + template + "/videos", onComplete, filters);
         },
@@ -338,7 +338,7 @@
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(this.globalFilters, filters || {});
 
             util.request(baseUrl + "/template/" + template + "/audios", onComplete, filters);
         },
@@ -364,7 +364,7 @@
             var baseUrl = util.templateReplace(this.baseURL, {
                 shortname: this.client()
             });
-            filters = util.extend(this.globalFilters, filters);
+            filters = util.extend(this.globalFilters, filters || {});
 
             util.request(baseUrl + "/template/" + template + "/videos/recommend/" + videoid, onComplete, filters);
         }
